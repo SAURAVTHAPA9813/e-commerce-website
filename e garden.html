@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothing Ecommerce Website</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/dad03e859c.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Berkshire+Swash&family=Comic+Neue:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Lato:ital,wght@0,400;0,700;0,900;1,700&family=Lexend+Deca:wght@500&family=Lexend:wght@500&family=Montserrat:wght@500&family=Open+Sans:wght@500;800&family=Roboto:wght@100;400&family=Sue+Ellen+Francisco&family=Work+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900;&display=swap">
+  </head>
+  <body class="home-page">
+
+  <header id="header">
+    <img class="logo" src="e garden logo1 copy.png" alt="Logo">
+    
+   
+    <div id="menu">
+      <button id="close-menu">×</button>
+      <div id="menu-header">Menu Title</div>
+      <div id="navbar-container">
+      <ul id="navbar">
+        <li><a href="e garden.html">Learn</a></li>
+        <li><a href="shop.html">Plants</a></li>
+        <li><a href="caretool.html">Care Tool</a></li>
+        <li><a href="#">Gifts</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    </div>
+    <div id="icons">
+      <i class="fas fa-bars" id="menu-button"></i>
+      <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
+      <a href="login.html">
+        <i class="fas fa-user" id="user-icon"></i>
+      </a>
+     
+      <a href="cart.html" id="lg-bag">
+        <i class="fal fa-shopping-bag"></i>
+      </a>
+    </div>
+  </header>
+  
+
+<!-- Fullscreen Search Overlay -->
+<div id="search-overlay" class="hidden">
+  <div class="search-bar-wrapper">
+    <input type="text" class="search-input" placeholder="Search for a store">
+    <button class="clear-button" onclick="toggleSearchOverlay()">✖</button>
+  </div>
+  <div class="trending-searches">
+    <p class="trending-title">TRENDING SEARCHES</p>
+    <div class="trending-list">
+      <span>indoor-plants</span>
+      <span>pots</span>
+      <span>plants</span>
+      <span>pochette</span>
+      <span>lnicker</span>
+    </div>
+  </div>
+</div>
+</section>
+ 
+  </body>
+<section id="hero">
+  <div class="txt">
+    <h2>BIGGER,   BETTER</h2>
+    <h1>LEAFIER, BLOMIER</h1>
+    <p>We are here to help you and your plant thrive together</p>
+    <div class="button-container">
+    <a href="shop.html" class="my-button">Shop Now</a>
+  </div>
+
+
+  </div>
+</section>
+
+<h1>Our Most Popular Plants</h1>
+<div class="scroll-container" id="scroll_container">
+
+  <section class="plant">
+    <a href="olive_tree.html" class="plant-link"> <div class="plant-image-container">
+      <img src="pink rododendan.png" alt="Olive Tree" class="plant-image">
+      <img src="rose2.png" alt="Olive Tree Hover" class="hover-image">
+    </div>
+    <h4>Olive Tree</h4>
+    <p>Measures 8-16" tall, it's our most popular plant</p>
+    <p>From $40</p></a>
+  </section>
+
+  <section class="plant">
+    <a href="ficus_audrey.html" class="plant-link"><div class="plant-image-container">
+      <img src="rose2.png" alt="Ficus Audrey Tree" class="plant-image">
+      <img src="loupe.png" alt="Ficus Audrey Tree Hover" class="hover-image">
+    </div>
+    <h4>Ficus Audrey Tree</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $34</p></a>
+  </section>
+
+  <section class="plant">
+    <a href="fiddle_leaf_fig1.html" class="plant-link"><div class="plant-image-container">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig" class="plant-image">
+      <img src="pink rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p></a>
+  </section>
+
+    <section class="plant">
+    <a href="fiddle_leaf_fig2.html" class="plant-link"><div class="plant-image-container">
+      <img src="loupe.png" alt="Fiddle Leaf Fig" class="plant-image">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p></a>
+  </section>
+    <section class="plant">
+    <a href="fiddle_leaf_fig3.html" class="plant-link"><div class="plant-image-container">
+      <img src="pink rododendan.png" alt="Fiddle Leaf Fig" class="plant-image">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p></a>
+  </section>
+    <section class="plant">
+    <a href="fiddle_leaf_fig4.html" class="plant-link"><div class="plant-image-container">
+      <img src="rose2.png" alt="Fiddle Leaf Fig" class="plant-image">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p></a>
+  </section>
+    <section class="plant">
+    <a href="fiddle_leaf_fig5.html" class="plant-link"><div class="plant-image-container">
+      <img src="rose2.png" alt="Fiddle Leaf Fig" class="plant-image">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p></a>
+  </section>
+</div>
+<h1>  New Arrivals </h1>
+<div class="new" id="new">
+  <section class="arrivals">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p>
+  </section>
+  <section class="arrivals">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p>
+  </section>
+  <section class="arrivals">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p>
+  </section>
+  <section class="arrivals">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p>
+  </section>
+  <section class="arrivals">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p>
+  </section>
+  <section class="arrivals">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p>
+  </section>
+  <section class="arrivals">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p>
+  </section>
+  <section class="arrivals">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+      <img src="rododendan.png" alt="Fiddle Leaf Fig Hover" class="hover-image">
+    </div>
+    <h4>Fiddle Leaf Fig</h4>
+    <p>Choose your planter style & color</p>
+    <p>From $49</p>
+  </section>
+
+  </div>
+<h1> Most Popular Categories </h1>
+<div class="cate" id="cate">
+  <section class="categorie">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+    </div>
+    <h4>Indoor Plants →</h4>
+  </section>
+  <section class="categorie">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+    </div>
+    <h4>Outdoor Plants →</h4>
+  </section>
+  <section class="categorie">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+    </div>
+    <h4>Pet-Friendly Plants →</h4>
+  </section>
+  <section class="categorie">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+    </div>
+    <h4>
+      Easy-Care Plants →</h4>
+  </section>
+  <section class="categorie">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+    </div>
+    <h4>Orchids →</h4>
+  </section>
+  <section class="categorie">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+    </div>
+    <h4>Large Plants →</h4>
+  </section>
+  <section class="categorie">
+    <div class="plant-image-container">
+      <img src="rose2.png" class="plant-image1">
+    </div>
+    <h4>Plant Care →</h4>
+  </section>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <!-- Existing Company, Get Help, and Social Links columns -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Help</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Order Status</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+  <!-- Newsletter Section -->
+<div class="footer-col newsletter newsletter-section">
+  <h2>Newsletter</h2>
+  <p>Sign up to be the first to hear about new arrivals, events, and more!</p>
+  <form class="newsletter-input">
+    <input type="email" placeholder="email@example.com">
+    <button type="submit">Subscribe</button>
+  </form>
+</div>
+
+    <!-- Divider Line and Copyright -->
+    <hr class="divider">
+    <div class="copyright">
+      <p>&copy; 2023 E Garden. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script> 
+</html>

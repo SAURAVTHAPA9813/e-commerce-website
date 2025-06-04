@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothing Ecommerce Website</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/dad03e859c.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Berkshire+Swash&family=Comic+Neue:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Lato:ital,wght@0,400;0,700;0,900;1,700&family=Lexend+Deca:wght@500&family=Lexend:wght@500&family=Montserrat:wght@500&family=Open+Sans:wght@500;800&family=Roboto:wght@100;400&family=Sue+Ellen+Francisco&family=Work+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900;&display=swap">
+  </head>
+
+  <body class="signup-page">
+  <header id="main-header">
+    <img class="site-logo" src="e garden logo1 copy.png" alt="Website Logo">
+   
+    <div id="menu">
+      <button id="close-menu">×</button>
+      <div id="menu-header">Menu Title</div>
+      
+      <div id="navbar-container">
+      <ul id="navbar">
+        <li><a href="e garden.html">Learn</a></li>
+        <li><a href="shop.html">Plants</a></li>
+        <li><a href="caretool.html">Care Tool</a></li>
+        <li><a href="#">Gifts</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    </div>
+    <div id="icons">
+      <i class="fas fa-bars" id="menu-button"></i>
+      <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
+      <a href="login.html">
+        <i class="fas fa-user" id="user-icon"></i>
+      </a>
+     
+      <a href="cart.html" id="lg-bag">
+        <i class="fal fa-shopping-bag"></i>
+      </a>
+    </div>
+  </header>
+  
+
+<!-- Fullscreen Search Overlay -->
+<div id="search-overlay" class="hidden">
+  <div class="search-bar-wrapper">
+    <input type="text" class="search-input" placeholder="Search for a store">
+    <button class="clear-button" onclick="toggleSearchOverlay()">✖</button>
+  </div>
+  <div class="trending-searches">
+    <p class="trending-title">TRENDING SEARCHES</p>
+    <div class="trending-list">
+      <span>indoor-plants</span>
+      <span>pots</span>
+      <span>plants</span>
+      <span>pochette</span>
+      <span>lnicker</span>
+    </div>
+  </div>
+</div>
+</section>
+ 
+
+<div class="signup-container">
+    <h1 class="signup-heading">Sign Up</h1>
+
+    <form>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" class="form-input">
+      </div>
+
+      <button type="submit" class="signup-btn">SIGN UP</button>
+    </form>
+  </div>
+
+</body>
+
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Existing Company, Get Help, and Social Links columns -->
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Affiliate Program</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get Help</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Order Status</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+    <!-- Newsletter Section -->
+  <div class="footer-col newsletter newsletter-section">
+    <h2>Newsletter</h2>
+    <p>Sign up to be the first to hear about new arrivals, events, and more!</p>
+    <form class="newsletter-input">
+      <input type="email" placeholder="email@example.com">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+  
+      <!-- Divider Line and Copyright -->
+      <hr class="divider">
+      <div class="copyright">
+        <p>&copy; 2023 E Garden. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  
+      </div>
+    </div>
+  </footer>
+  <script src="script.js" defer></script> 
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </html>

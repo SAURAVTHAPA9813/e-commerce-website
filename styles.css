@@ -1,0 +1,723 @@
+body {
+   margin: 0;
+   padding: 0;
+   font-family: Arial, sans-serif;
+   display: flex;
+   flex-direction: column; /* Allows stacking elements like navbar and main content */
+   min-height: 100vh; /* Ensures content isn't clipped */
+   background-color: #f9f9f9;
+}
+
+#content { /* Add this for your main content area */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex: 1; /* Takes up remaining space under the navbar */
+}
+
+
+ /* Header styling */
+ #main-header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 9999;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 20px;
+   transition: background-color 0.3s ease, padding 0.3s ease;
+   background-color: transparent; /* Transparent background initially */
+ }
+
+ /* Logo styling */
+ .site-logo {
+   max-width: 120px; /* Restrict maximum width */
+   height: auto; /* Maintain aspect ratio */
+ }
+ #main-header.scrolled {
+   background-color: rgba(229, 226, 226, 0.8); /* Light transparent background */
+   padding: 10px 20px; /* Reduced padding for a compact appearance */
+   transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transitions */
+ }
+/* Icon colors when navbar appears */
+#icons i.black-icons {
+color: black; /* Changes icons to black */
+transition: color 0.3s ease; /* Smooth transition */
+}
+
+ /* Responsive Design */
+ @media (max-width: 768px) {
+   #main-header {
+     padding: 15px;
+   }
+ 
+   .site-logo {
+     max-width: 100px; /* Adjust logo size for smaller screens */
+   }
+ 
+   #icons {
+     font-size: 18px; /* Adjust icon size */
+   }
+ }
+ 
+ @media (max-width: 480px) {
+   #main-header {
+     flex-direction: column; /* Stack elements vertically */
+     align-items: flex-start; /* Align items to the left */
+     padding: 10px;
+   }
+ 
+   .site-logo {
+     max-width: 80px; /* Further adjust logo size */
+   }
+ 
+   #icons {
+     margin-top: 10px; /* Add spacing above icons */
+     font-size: 16px; /* Adjust icon size for small screens */
+   }
+ }
+ 
+
+/* Menu Button */
+#menu-button {
+   position: fixed; /* Positioned on the right */
+   top:14px;
+   right: 30px; /* Matches icon positioning */
+   transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+   font-size: 22px; /* Matches the icon size */
+   cursor: pointer;
+   color: #e6dbdb; /* Default color, matches icons */
+   z-index: 10000; /* Ensures it's above other elements */
+ }
+ 
+ /* Hover effect to match icons */
+ #menu-button:hover {
+   color: #904343; /* Change color on hover */
+   transform: scale(1.1); /* Slightly enlarge on hover */
+ }
+ 
+ /* Active state for scrolling behavior */
+ .scrolled #menu-button {
+   color: #000; /* Change color when scrolled */
+ }
+ /* Close Button */
+ #close-menu {
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   background: none;
+   border: none;
+   font-size: 30px;
+   cursor: pointer;
+   color: #333;
+ }
+ /* Menu Container */
+ #menu {
+   position: fixed;
+   top: 0px; /* Adds margin at the top */
+   right: 0;
+   width: 250px; /* Covers only the right part */
+   height: calc(100% - 10px); /* Adjusts height to account for the top margin */
+   background-color: rgba(255, 255, 255, 0.9); /* Default light background */
+   transition: background-color 0.3s ease;
+   z-index: 9999;
+   transform: translateX(100%);
+   transition: transform 0.4s ease-in-out;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start; /* Aligns text to the left */
+   justify-content: flex-start; /* Aligns items to the top */
+   padding-top: 20px; /* Precise spacing at the top */
+   padding: 30px 40px; /* Adds horizontal padding for spacing */
+   overflow-y: auto;
+   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+ }
+ /* Menu Default State (White icons by default) */
+ #menu i, 
+ #menu a {
+   font-size: 18px;
+   color: #fff; /* White icons by default */
+   transition: color 0.3s ease; /* Smooth color transition */
+ }
+ 
+ /* Menu Scrolled State (Black icons when scrolling down) */
+ #header.scrolled #menu i, 
+ #header.scrolled #menu a {
+   color: #333; /* Black icons when scrolled */
+ }
+ #header.scrolled #menu {
+   background-color: #fff; /* Full white background when scrolled */
+ }
+ /* Menu Header */
+ #menu-header {
+   font-size: 30px;
+   font-weight: bold; /* Make the title stand out */
+   margin-bottom: 30px; /* Add space below the title */
+   padding: 0; /* Ensure no padding is added */
+   text-align: left;
+ }
+ 
+ 
+ /* Menu Visible State */
+ #menu.menu-visible {
+   transform: translateX(0);
+ }
+ 
+ 
+ 
+ /* Navbar inside the menu */
+ 
+ 
+ #menu ul {
+   list-style: none; /* Removes bullets */
+   padding: 0;
+   margin: 0;
+   text-align: left; /* Aligns the text to the left */
+   display: flex;
+   flex-direction: column; /* Stacks the menu items vertically */
+   gap: 15px; /* Adds space between menu items */
+ }
+ 
+ #menu ul li {
+   margin: 0; /* Resets default margins */
+   width: 100%; /* Ensures items take full width */
+ }
+ 
+ #menu ul li a {
+   display: block; /* Makes the entire area clickable */
+   text-decoration: none; /* Removes underline from links */
+   font-size: 18px; /* Adjust font size */
+   color: #000; /* Sets the text color */
+   font-weight: 400; /* Adjusts text weight for a clean look */
+   padding: 10px 15px; /* Adds padding for clickable area */
+   border-radius: 5px; /* Adds rounded corners (optional) */
+   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+ }
+ 
+ #menu ul li a:hover {
+   color: #999; /* Changes color on hover for better interactivity */
+ }
+ 
+ 
+ /* Prevent scrolling of the body when the menu is open */
+ body.menu-opened {
+   overflow: hidden;
+ }
+ 
+ /* Icons Styling */
+ #icons {
+   position: fixed;
+   display: flex;
+   flex-direction: row !important;
+   align-items: center;
+   justify-content: flex-end;
+   margin-right: 30px;
+   gap: 5px !important;
+   top:4px;
+   margin-bottom: 10px; /* Create space from the bottom */
+   padding: 15px;
+     right: 30px;
+     z-index: 1000;
+    
+   }
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ #icons i,
+ #icons a {
+   font-size: 18px;
+   color: #eae8e8;
+   cursor: pointer;
+   display: flex;
+   align-items: center; /* Center icon text */
+   justify-content: center;
+   margin-bottom: 5px; /* Adjust as needed */
+   margin: 0 7px; /* Horizontal spacing */
+   transition: color 0.3s ease; /* Smooth color transition */
+ }
+ #header.scrolled #icons i,
+ #header.scrolled #icons a {
+   color: #2a2929; /* Black icons when scrolled */
+ }
+ /* Responsive Styling */
+ @media screen and (max-width: 768px) {
+   #icons {
+     flex-direction: row; /* Keep icons horizontal */
+     justify-content: flex-end; /* Space them evenly */
+     align-items: center; /* Ensure vertical alignment */
+   }
+ }
+ 
+ @media screen and (max-width: 500px) {
+   #icons {
+     flex-direction: row; /* Keep icons horizontal */
+     justify-content: space-between; /* Space them evenly */
+     align-items: center; /* Ensure vertical alignment */
+   }
+ }
+ 
+ /* Navbar Hidden Initially */
+ #navbar-container {
+   position: relative;
+   top: 0;
+   left: 0;
+   width: 100%;
+   background-color: rgba(255, 255, 255, 0.9);
+   margin-top: 80px; /* Add margin to move the navbar down */
+   padding: 10px 20px; /* Retain padding for consistent spacing */
+   z-index: 9999;
+   display: block;
+ }
+ 
+ #navbar {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+ }
+ 
+ #navbar li {
+   margin: 0;
+ }
+ 
+ #navbar a {
+   text-decoration: none;
+   color: #000; /* Ensure contrast with background */
+   font-weight: 600;
+   font-size: 16px;
+   position: relative; /* Required for ::after positioning */
+   transition: color 0.3s;
+ }
+ 
+ #navbar a::after {
+   content: '';
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: -4px;
+   height: 2px;
+   background-color: #4CAF50;
+   transform: scaleX(0);
+   transition: transform 0.3s ease;
+   transform-origin: right;
+ }
+ 
+ #navbar a:hover::after,
+ #navbar a.active::after {
+   transform: scaleX(1);
+   transform-origin: left;
+ }
+ 
+ #navbar a:hover,
+ #navbar a.active {
+   color: #4CAF50;
+ }
+ 
+ .hidden-navbar {
+   display: none;
+ }
+ 
+ 
+ * Fullscreen overlay for the search bar */
+ #search-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(255, 255, 255, 0.98);
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   z-index: 999;
+   opacity: 0;
+   visibility: hidden;
+   transition: opacity 0.3s ease, visibility 0.3s ease;
+   padding: 0;
+   margin: 0;
+ }
+ 
+ #search-overlay.active {
+   opacity: 1;
+   visibility: visible;
+ }
+ 
+ /* Search Bar Wrapper */
+ .search-bar-wrapper {
+   width: 110%;
+   max-width: 1000px;
+   padding: 15px 25px;
+   height: 80px;
+   margin-top: 15px;
+   display: flex;
+   align-items: center;
+   background: #fff;
+   border: none;
+   border-radius: 25px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   margin-top: 10px;
+   box-shadow:none;
+ }
+ 
+ /* Input Field */
+ .search-input {
+   flex: 1;
+   height: 100%;
+   border: none;
+   padding: 15px 20px; /* Increase padding for larger input */
+   outline: none;
+   font-size: 18px;
+   color: #333;
+ }
+ 
+ .search-input::placeholder {
+   color: #aaa;
+ }
+ 
+ /* Clear/Close Button */
+ .clear-button {
+   background: none;
+   border: none;
+   font-size: 18px;
+   color: #888;
+   cursor: pointer;
+   outline: none;
+ }
+ 
+ .clear-button:hover {
+   color: #000;
+ }
+ 
+ 
+ 
+ /* Fullscreen Search Overlay */
+ #search-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 43%;
+   background: rgba(255, 255, 255, 0.95); /* Light background */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center; /* Align content to top */
+   padding-top: 20px;
+   padding: 20px;
+   z-index: 9999;
+   transition: opacity 0.3s ease, visibility 0.3s ease;
+   opacity: 1;
+   visibility: visible;
+ }
+ 
+ /* Hidden state */
+ #search-overlay.hidden {
+   opacity: 0;
+   visibility: hidden;
+   pointer-events: none;
+ }
+ 
+ /* Search Bar Wrapper */
+ .search-bar-wrapper {
+   width: 90%;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+ }
+ 
+ .search-input {
+   flex: 1;
+   padding: 10px 20px;
+   font-size: 1rem;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+ }
+ 
+ .clear-button {
+   background: none;
+   border: none;
+   font-size: 1.5rem;
+   cursor: pointer;
+ }
+ .clear-button:focus,
+ .clear-button:active {
+     outline: none;
+     border: none;
+     box-shadow: none;
+ }
+ 
+ /* Trending Searches */
+ .trending-searches {
+   margin-top: 20px;
+   font-size: 0.9rem;
+   text-align: center;
+ }
+ 
+ .trending-title {
+   font-size: 1rem;
+   font-weight: bold;
+   margin-bottom: 10px;
+ }
+ 
+ .trending-list {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center; /* Center the trending items */
+   gap: 15px; /* Space between items */
+   padding: 10px; /* Add padding around the list */
+ }
+ 
+ .trending-list span {
+   font-size: 0.9rem;
+   color: #000;
+   cursor: pointer;
+ }
+ 
+ .trending-list span:hover {
+   text-decoration: underline;
+ }
+ 
+ /* Hide Navbar when search overlay is active */
+ .hidden-navbar {
+   display: none;
+ }
+ 
+ /* Responsive Design for Smaller Screens */
+ @media screen and (max-width: 768px) {
+   #menu {
+     width: 100%; /* Take full width for mobile */
+     transform: translateX(100%); /* Initially hidden */
+   }
+ 
+   #menu.open {
+     transform: translateX(0); /* Show menu when opened */
+   }
+ 
+   #navbar-container {
+     padding-top: 20px; /* Add space for better readability */
+   }
+ 
+   #navbar li {
+     margin: 0; /* Remove unnecessary margins */
+   }
+ 
+   #navbar a {
+     font-size: 18px; /* Slightly larger text for touchscreens */
+     padding: 10px 15px; /* Increase touch-friendly area */
+   }
+ 
+   /* Hide the menu button on larger screens */
+   #menu-button {
+     display: block;
+     font-size: 24px; /* Increase size for better visibility */
+   }
+ 
+   @media screen and (min-width: 769px) {
+     #menu-button {
+       display: none;
+     }
+   }
+ }
+ /* Responsive Design */
+ @media (max-width: 768px) {
+   #search-overlay {
+     height: 50%; /* Cover half the screen on smaller devices */
+   }
+ 
+   .search-bar-wrapper {
+     flex-direction: column;
+     gap: 10px; /* Adjust spacing for mobile */
+   }
+ 
+   .trending-title {
+     font-size: 1rem;
+   }
+ 
+   .trending-list span {
+     font-size: 0.9rem;
+   }
+ }
+ 
+ 
+ /* Backdrop overlay styling */
+ #backdrop {
+   display: none; /* Hidden by default */
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+   z-index: 99;
+ }
+ 
+ 
+ /* Mobile Navigation */
+ #mobile {
+   display: none;
+ }
+ /* Responsive Styling */
+ @media screen and (max-width: 768px) {
+   #icons {
+     flex-direction: column; /* Stack items vertically */
+     align-items: flex-start; /* Align icons to the left */
+     gap: 10px; /* Adjust spacing for vertical layout */
+     padding: 10px; /* Adjust padding */
+   }
+ 
+   #icons i,
+   #icons a {
+     font-size: 20px; /* Adjust size for smaller screens */
+   }
+ 
+   #lg-bag i {
+     font-size: 22px; /* Adjust specific icon size */
+   }
+ }
+ 
+ 
+
+
+ 
+ .container {
+   margin-top: 50px;
+   margin-left: 20px;
+   display: flex;
+   width: 100%;
+   height: 90%; /* Container takes up most of the viewport */
+   max-width: 1450px;
+   border: 1px solid #ddd;
+   background: #fff;
+ }
+ 
+
+ 
+ /* Left Section Styling */
+ .left-section {
+   display: flex;
+   flex-direction: row;
+   gap: 20px; /* Space between thumbnails and the main image */
+   align-items: flex-start;
+   width: 50%; /* Left section occupies half the page */
+ }
+ 
+ /* Thumbnails */
+ .thumbnails {
+   display: flex;
+   flex-direction: column; /* Align thumbnails vertically */
+   gap: 15px; /* Space between thumbnails */
+ }
+ 
+ .thumbnails img {
+   width: 80px; /* Proper thumbnail size */
+   height: 80px;
+   object-fit: cover; /* Ensure image content scales correctly */
+   border-radius: 5px; /* Rounded corners for a clean look */
+   cursor: pointer;
+   transition: transform 0.2s ease; /* Add hover effect */
+ }
+ 
+ .thumbnails img:hover {
+   transform: scale(1.1); /* Enlarge slightly on hover */
+   border: 2px solid #000; /* Add focus to hovered thumbnail */
+ }
+ 
+ /* Main Image */
+ .main-image img {
+   width: 100%; /* Make the image occupy full container width */
+   max-width: 600px; /* Set a maximum size for larger screens */
+   height: auto;
+   border-radius: 10px;
+   object-fit: cover;
+ }
+ 
+ 
+ /* Right Section: Product Details */
+ .right-section {
+   flex-grow: 1; /* Right section takes the remaining space */
+   padding: 30px;
+   overflow-y: auto; /* Enable scrolling if content overflows */
+   box-sizing: border-box;
+ }
+ 
+ h1 {
+   font-size: 28px;
+   margin-bottom: 10px;
+ }
+ 
+ p {
+   font-size: 18px;
+   margin-bottom: 20px;
+ }
+ 
+ .options label {
+   font-weight: bold;
+   display: block;
+   margin-top: 20px;
+ }
+ 
+ button {
+   margin: 5px 10px 5px 0;
+   padding: 10px 15px;
+   border: 1px solid #ddd;
+   background: #fff;
+   cursor: pointer;
+   border-radius: 5px;
+   font-size: 14px;
+ }
+ 
+ button.selected {
+   background: #000;
+   color: #fff;
+ }
+ 
+ .quantity-selector {
+   display: flex;
+   align-items: center;
+   margin-top: 20px;
+ }
+ 
+ .quantity-selector button {
+   width: 30px;
+   height: 30px;
+   text-align: center;
+   border-radius: 5px;
+ }
+ 
+ .quantity-selector input {
+   width: 50px;
+   text-align: center;
+   margin: 0 10px;
+   font-size: 16px;
+ }
+ 
+ .add-to-cart button {
+   margin-top: 20px;
+   padding: 15px;
+   background: #000;
+   color: #fff;
+   border: none;
+   font-size: 16px;
+   cursor: pointer;
+ }
+ 
+ .guides a {
+   color: #006400;
+   text-decoration: none;
+   margin-right: 10px;
+ }
+ 
+ .guides a:hover {
+   text-decoration: underline;
+ }
+ 
