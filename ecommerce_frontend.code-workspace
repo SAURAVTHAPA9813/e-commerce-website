@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "ecommerce_frontend",
+			"path": "."
+		},
+		{
+			"name": "ecommerce_backend",
+			"path": "../../ecommerce_backend"
+		}
+	],
+	"settings": {}
+}

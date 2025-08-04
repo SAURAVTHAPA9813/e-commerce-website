@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Ecommerce Website</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  
+  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="other.css">
+  <script src="https://kit.fontawesome.com" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Berkshire+Swash&family=Comic+Neue:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Lato:ital,wght@0,400;0,700;0,900;1,700&family=Lexend+Deca:wght@500&family=Lexend:wght@500&family=Montserrat:wght@500&family=Open+Sans:wght@500;800&family=Roboto:wght@100;400&family=Sue+Ellen+Francisco&family=Work+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900;&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+<header id="header">
+   <a href="e garden.html">
+  <img class="logo" src="e garden logo1 copy.png" alt="Logo">
+</a>
+
+
+    <!-- Main Navigation for Desktop View -->
+    <nav id="main-nav-desktop">
+        <ul id="navbar-desktop">
+            <li><a href="shop.html">Plants</a></li>
+            <li><a href="caretool.html">Care Tool</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div id="icons">
+        <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
+        <a href="login.html">
+            <i class="fas fa-user" id="user-icon"></i>
+        </a>
+        <a href="cart.html" id="lg-bag">
+            <i class="fal fa-shopping-bag"></i>
+        </a>
+        <!-- The hamburger menu button (will be hidden on desktop, shown on mobile) -->
+        <i class="fas fa-bars" id="menu-button"></i>
+    </div>
+</header>
+
+
+<!-- The OFF-CANVAS menu (for mobile/tablet) - this remains outside the header's main flow -->
+<div id="menu">
+    <button id="close-menu">×</button>
+    <div id="menu-header">Menu Title</div>
+    <div id="navbar-container-mobile">
+        <ul id="navbar-mobile">
+            <li><a href="e garden.html">Learn</a></li>
+            <li><a href="shop.html">Plants</a></li>
+            <li><a href="caretool.html">Care Tool</a></li>
+ 
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+</div>
+  
+
+ 
+ <div id="search-overlay" class="hidden">
+    <div class="search-bar-wrapper glass-effect">
+        <input type="text" class="search-input" placeholder="Search">
+        <!-- The search button, integrated into the bar -->
+        <button class="search-button" id="search-submit-button" aria-label="Submit search"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="trending-searches">
+        <p class="trending-title">Trending</p>
+        <div class="trending-list">
+            <!-- Each trending item is now a div with an icon -->
+            <div class="trending-item" data-search-term="wreath"><i class="fas fa-search"></i> Wreath</div>
+            <div class="trending-item" data-search-term="vase"><i class="fas fa-search"></i> Vase</div>
+            <div class="trending-item" data-search-term="planter"><i class="fas fa-search"></i> Planter</div>
+            <div class="trending-item" data-search-term="candle"><i class="fas fa-search"></i> Candle</div>
+            <div class="trending-item" data-search-term="plant stand"><i class="fas fa-search"></i> Plant Stand</div>
+        </div>
+    </div>
+    
+</div>
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Shopping Cart Slider -->
+    <div class="shopping-cart" id="shoppingCart">
+        <!-- Cart Header -->
+        <div class="cart-header">
+            <h2 class="cart-title">
+                Your Cart
+                <span class="item-count" id="itemCount">(0 items)</span>
+            </h2>
+            <button class="cart-close" id="cartClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Cart Body -->
+        <div class="cart-body" id="cartBody">
+            <div class="empty-cart">
+                <i class="fal fa-shopping-bag"></i>
+                <h3>Your cart is empty</h3>
+                <p>Add some plants to get started!</p>
+            </div>
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="cart-footer">
+            <div class="subtotal">
+                <span class="subtotal-label">Subtotal</span>
+                <span class="subtotal-amount" id="subtotalAmount">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">
+                Secure Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- DEMO CONTENT - Replace with your existing product display -->
+    
+        <h1>Demo Products</h1>
+
+        <div class="scroll-container" id="scroll_container"></div>
+   
+         
+</body>
+
+  <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+<script src="js/ui.js"></script>
+
+</html>

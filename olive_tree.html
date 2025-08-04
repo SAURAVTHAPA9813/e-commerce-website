@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Ecommerce Website</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  
+  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="other.css">
+  <script src="https://kit.fontawesome.com" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Berkshire+Swash&family=Comic+Neue:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Lato:ital,wght@0,400;0,700;0,900;1,700&family=Lexend+Deca:wght@500&family=Lexend:wght@500&family=Montserrat:wght@500&family=Open+Sans:wght@500;800&family=Roboto:wght@100;400&family=Sue+Ellen+Francisco&family=Work+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900;&display=swap">
+  </head>
+  <body class="home-page">
+
+ <header id="header">
+    <img class="logo" src="e garden logo1 copy.png" alt="Logo">
+
+    <!-- Main Navigation for Desktop View -->
+    <nav id="main-nav-desktop">
+        <ul id="navbar-desktop">
+            <li><a href="e garden.html">Learn</a></li>
+            <li><a href="shop.html">Plants</a></li>
+            <li><a href="caretool.html">Care Tool</a></li>
+            <li><a href="#">Gifts</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div id="icons">
+        <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
+        <a href="login.html">
+            <i class="fas fa-user" id="user-icon"></i>
+        </a>
+        <a href="cart.html" id="lg-bag">
+            <i class="fal fa-shopping-bag"></i>
+        </a>
+        <!-- The hamburger menu button (will be hidden on desktop, shown on mobile) -->
+        <i class="fas fa-bars" id="menu-button"></i>
+    </div>
+</header>
+
+<!-- The OFF-CANVAS menu (for mobile/tablet) - this remains outside the header's main flow -->
+<div id="menu">
+    <button id="close-menu">×</button>
+    <div id="menu-header">Menu Title</div>
+    <div id="navbar-container-mobile">
+        <ul id="navbar-mobile">
+            <li><a href="e garden.html">Learn</a></li>
+            <li><a href="shop.html">Plants</a></li>
+            <li><a href="caretool.html">Care Tool</a></li>
+            <li><a href="#">Gifts</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+</div>
+  
+
+ 
+ <div id="search-overlay" class="hidden">
+    <div class="search-bar-wrapper">
+        <input type="text" class="search-input" placeholder="Search">
+        <!-- The search button, integrated into the bar -->
+        <button class="search-button" id="search-submit-button" aria-label="Submit search"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="trending-searches">
+        <p class="trending-title">Trending</p>
+        <div class="trending-list">
+            <!-- Each trending item is now a div with an icon -->
+            <div class="trending-item" data-search-term="wreath"><i class="fas fa-search"></i> Wreath</div>
+            <div class="trending-item" data-search-term="vase"><i class="fas fa-search"></i> Vase</div>
+            <div class="trending-item" data-search-term="planter"><i class="fas fa-search"></i> Planter</div>
+            <div class="trending-item" data-search-term="candle"><i class="fas fa-search"></i> Candle</div>
+            <div class="trending-item" data-search-term="plant stand"><i class="fas fa-search"></i> Plant Stand</div>
+        </div>
+    </div>
+   
+</div>
+     
+     
+
+
+  <div class="container">
+    <!-- Left Section: Image Gallery -->
+    <div class="left-section">
+      <div class="thumbnails">
+        <img src="image1.jpg" alt="Thumbnail 1">
+        <img src="image2.jpg" alt="Thumbnail 2">
+        <img src="image3.jpg" alt="Thumbnail 3">
+        <img src="image4.jpg" alt="Thumbnail 4">
+      </div>
+      <div class="main-image">
+        <img src="pink rododendan.png" alt="Main Product Image">
+      </div>
+    </div>
+
+    <!-- Right Section: Product Details -->
+    <div class="right-section">
+      <h1>Philodendron Green</h1>
+      <p><strong>Price:</strong> $69</p>
+
+      <div class="options">
+        <label>Size:</label>
+        <button class="selected">Small</button>
+        <button>Medium</button>
+
+        <label>Planter:</label>
+        <button>Westcott</button>
+        <button>Isabella</button>
+        <button>Grow Pot</button>
+        <button>Hyde</button>
+        <button>Grant</button>
+
+        <label>Color:</label>
+        <button class="selected">Cream</button>
+        <button>Black</button>
+      </div>
+
+      <div class="quantity-selector">
+        <button>-</button>
+       <input type="number" value="1" min="1" title="Quantity">
+        <button>+</button>
+      </div>
+
+      <div class="add-to-cart">
+        <button>Add to Cart - (Ships Free!)</button>
+      </div>
+
+      <div class="guides">
+        <a href="#">Size Guide</a> | <a href="#">Style Guide</a>
+      </div>
+    </div>
+  </div>
+</body>  <script src="script.js"></script>
+</html>
