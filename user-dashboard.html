@@ -4,34 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <header id="header">
-   <a href="e garden.html">
-  <img class="logo" src="e garden logo1 copy.png" alt="Logo">
-</a>
-
-
-    <!-- Main Navigation for Desktop View -->
-    <nav id="main-nav-desktop">
-        <ul id="navbar-desktop">
-
-            <li><a href="shop.html">Plants</a></li>
-            <li><a href="caretool.html">Care Tool</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </nav>
-
-    <div id="icons">
-        <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
-        <a href="login.html">
-            <i class="fas fa-user" id="user-icon"></i>
-        </a>
-        <a href="cart.html" id="lg-bag">
-            <i class="fal fa-shopping-bag"></i>
-        </a>
-        <!-- The hamburger menu button (will be hidden on desktop, shown on mobile) -->
-        <i class="fas fa-bars" id="menu-button"></i>
-    </div>
-</header>
+    <!-- Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -40,147 +17,572 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #05c078 0%, #08824b 100%);
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #FAF9F6;
+            color: #222222;
             min-height: 100vh;
-        }
-
-        .navbar {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .navbar h1 {
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .navbar .user-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: white;
-        }
-
-        .logout-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
         }
 
         .welcome-card {
             background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
+            border: 1px solid rgba(0, 128, 0, 0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            text-align: center;
         }
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem;
         }
 
         .dashboard-card {
             background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, shadow 0.3s;
+            border: 1px solid rgba(0, 128, 0, 0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
         }
 
         .dashboard-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .dashboard-card h3 {
-            color: #333;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            color: #4CAF50;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
         }
 
         .dashboard-card p {
             color: #666;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
         }
 
         .card-icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #4CAF50;
         }
 
         .action-btn {
-            background: linear-gradient(135deg, #66ea6d 0%, #4ba281 100%);
+            background: linear-gradient(135deg, #4CAF50, #81C784);
             color: white;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1rem;
-            margin-top: 1rem;
-            transition: transform 0.3s;
+            font-size: 0.9rem;
+            transition: transform 0.3s, background 0.3s;
         }
 
         .action-btn:hover {
+            background: linear-gradient(135deg, #388E3C, #66BB6A);
             transform: scale(1.05);
         }
 
+        .logout-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.3s;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+        }
+
+        .logout-btn:hover { 
+            transform: scale(1.05); 
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-header h2 {
+            color: #4CAF50;
+            margin: 0;
+        }
+
+        .close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .close:hover {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #388E3C, #66BB6A);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #666;
+            border: 1px solid #ddd;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            margin-right: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: #e9e9e9;
+        }
+
+        /* Orders Table */
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .orders-table th, .orders-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .orders-table th {
+            background-color: #f8f9fa;
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-shipped {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-delivered {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        /* Address Cards */
+        .address-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .address-card.default {
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.05);
+        }
+
+        .default-badge {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #4CAF50;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+        }
+
+        .address-actions {
+            margin-top: 0.5rem;
+        }
+
+        .btn-small {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 0.75rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .dashboard-container {
-                padding: 0 1rem;
+                padding: 0 0.5rem;
+                margin: 1rem auto;
             }
-            
-            .navbar {
-                flex-direction: column;
+
+            .welcome-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
                 gap: 1rem;
-                text-align: center;
+            }
+
+            .dashboard-card {
+                padding: 1rem;
+            }
+
+            .modal-content {
+                margin: 1% auto;
+                padding: 1rem;
+                width: 95%;
+            }
+
+            .orders-table {
+                font-size: 0.8rem;
+            }
+
+            .orders-table th, .orders-table td {
+                padding: 0.5rem;
             }
         }
 
-        /* Debug styles */
         .debug-info {
             position: fixed;
             top: 10px;
             right: 10px;
             background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 10px;
+            padding: 5px;
             border-radius: 5px;
-            font-size: 12px;
+            font-size: 10px;
             z-index: 1000;
+        }
+
+        /* Shopping Cart Styles */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .shopping-cart {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 100vh;
+            background: #ffffff;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .shopping-cart.active {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+
+        .item-count {
+            font-size: 1rem;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .cart-close:hover {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .cart-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .empty-cart i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart h3 {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .empty-cart p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #4CAF50;
+            font-weight: 500;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .cart-item-remove:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .subtotal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .subtotal-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .subtotal-amount {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #4CAF50;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Responsive Cart */
+        @media (max-width: 480px) {
+            .shopping-cart {
+                width: 100%;
+            }
+
+            .cart-header {
+                padding: 15px;
+            }
+
+            .cart-body {
+                padding: 15px;
+            }
+
+            .cart-footer {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -189,62 +591,695 @@
         Debug: Script loading...
     </div>
 
-    <nav class="navbar">
-        <h1>User Dashboard</h1>
-        <div class="user-info">
-            <span id="user-name">Welcome, User!</span>
-            <button id="logout-btn" class="logout-btn">Logout</button>
-        </div>
-    </nav>
-
     <div class="dashboard-container">
         <div class="welcome-card">
-            <h2>Welcome to Your Dashboard!</h2>
-            <p>This is your personal space where you can manage your account and access all available features.</p>
+            <h2>Welcome to Your Dashboard, <span id="userName">User</span>!</h2>
+            <button id="logout-btn" class="logout-btn">Logout</button>
+            <p>Manage your profile, view orders, shop for plants, and more.</p>
         </div>
 
         <div class="dashboard-grid">
             <div class="dashboard-card">
+                <h3><span class="card-icon">🌿</span>Shop All Plants</h3>
+                <p>Browse our complete collection of beautiful plants and find your next green companion.</p>
+                <button class="action-btn" onclick="window.location.href='shop.html'">Shop Now</button>
+            </div>
+
+            <div class="dashboard-card">
                 <h3><span class="card-icon">👤</span>Profile Management</h3>
                 <p>Update your personal information, change your password, and manage your account settings.</p>
-                <button class="action-btn" onclick="alert('Profile management feature coming soon!')">Manage Profile</button>
+                <button class="action-btn" onclick="openProfileModal()">Manage Profile</button>
             </div>
 
             <div class="dashboard-card">
                 <h3><span class="card-icon">📦</span>My Orders</h3>
-                <p>View your order history, track current orders, and manage returns or exchanges.</p>
-                <button class="action-btn" onclick="alert('Orders feature coming soon!')">View Orders</button>
+                <p id="orders-count">Loading orders...</p>
+                <button class="action-btn" onclick="openOrdersModal()">View Orders</button>
             </div>
 
             <div class="dashboard-card">
-                <h3><span class="card-icon">🛒</span>Shopping</h3>
-                <p>Browse our products, add items to your cart, and make purchases.</p>
-                <button class="action-btn" onclick="alert('Shopping feature coming soon!')">Start Shopping</button>
-            </div>
-
-            <div class="dashboard-card">
-                <h3><span class="card-icon">💳</span>Payment Methods</h3>
-                <p>Manage your saved payment methods and billing addresses for faster checkout.</p>
-                <button class="action-btn" onclick="alert('Payment methods feature coming soon!')">Manage Payments</button>
+                <h3><span class="card-icon">🛒</span>Shopping Cart</h3>
+                <p id="cart-count">Loading cart...</p>
+                <button class="action-btn" onclick="openCart()">View Cart</button>
             </div>
 
             <div class="dashboard-card">
                 <h3><span class="card-icon">📍</span>Addresses</h3>
-                <p>Add, edit, or remove your shipping addresses for convenient delivery.</p>
-                <button class="action-btn" onclick="alert('Address management feature coming soon!')">Manage Addresses</button>
-            </div>
-
-            <div class="dashboard-card">
-                <h3><span class="card-icon">🎯</span>Wishlist</h3>
-                <p>Save products you love for later and get notified about price changes.</p>
-                <button class="action-btn" onclick="alert('Wishlist feature coming soon!')">View Wishlist</button>
+                <p>Add, edit, or remove your shipping addresses for convenient delivery of your plants.</p>
+                <button class="action-btn" onclick="openAddressModal()">Manage Addresses</button>
             </div>
         </div>
     </div>
 
-   
-    <script src="js/auth.js"></script>
+    <!-- Profile Management Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Profile Management</h2>
+                <button class="close" onclick="closeModal('profileModal')">&times;</button>
+            </div>
+            <div id="profileMessage" class="message"></div>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="currentPassword">Current Password (leave blank if not changing)</label>
+                    <input type="password" id="currentPassword" name="currentPassword">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" name="newPassword">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                </div>
+                <button type="submit" class="btn-primary">Update Profile</button>
+                <button type="button" class="btn-secondary" onclick="closeModal('profileModal')">Cancel</button>
+            </form>
+        </div>
+    </div>
 
-<script src="js/ui.js"></script>
+    <!-- Orders Modal -->
+    <div id="ordersModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order History</h2>
+                <button class="close" onclick="closeModal('ordersModal')">&times;</button>
+            </div>
+            <div id="ordersContent">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order #</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <!-- Orders will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Address Management Modal -->
+    <div id="addressModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Manage Addresses</h2>
+                <button class="close" onclick="closeModal('addressModal')">&times;</button>
+            </div>
+            <div id="addressMessage" class="message"></div>
+            
+            <button class="btn-primary" onclick="showAddAddressForm()" style="margin-bottom: 1rem;">Add New Address</button>
+            
+            <div id="addAddressForm" style="display: none; margin-bottom: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                <h3>Add New Address</h3>
+                <form id="addressForm">
+                    <div class="form-group">
+                        <label for="addressName">Address Name (e.g., Home, Office)</label>
+                        <input type="text" id="addressName" name="addressName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="streetAddress">Street Address</label>
+                        <input type="text" id="streetAddress" name="streetAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State/Province</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">ZIP/Postal Code</label>
+                        <input type="text" id="zipCode" name="zipCode" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" name="country" required>
+                            <option value="">Select Country</option>
+                            <option value="US">United States</option>
+                            <option value="CA">Canada</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="AU">Australia</option>
+                            <option value="NP">Nepal</option>
+                            <option value="IN">India</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Save Address</button>
+                    <button type="button" class="btn-secondary" onclick="hideAddAddressForm()">Cancel</button>
+                </form>
+            </div>
+            
+            <div id="addressesList">
+                <!-- Saved addresses will be displayed here -->
+            </div>
+        </div>
+    </div>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+    <script>
+        // Global variables
+        let currentUser = null;
+        let userAddresses = [];
+        let userOrders = [];
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
+            if (!storedUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            currentUser = storedUser;
+            document.getElementById('userName').textContent = currentUser.firstName || 'User';
+            loadUserProfile();
+            loadDashboardCounts(); // Load cart and order counts
+            loadSampleAddresses();
+            setupEventListeners();
+        });
+
+        // Check if user is logged in and load data
+        function checkAuthAndLoadData() {
+            const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
+            if (!storedUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            currentUser = storedUser;
+            document.getElementById('userName').textContent = currentUser.firstName || 'User';
+            loadUserProfile();
+            loadSampleOrders();
+            loadSampleAddresses();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Profile form submission
+            document.getElementById('profileForm').addEventListener('submit', handleProfileUpdate);
+            
+            // Address form submission
+            document.getElementById('addressForm').addEventListener('submit', handleAddressAdd);
+            
+            // Logout button (handled by auth.js if present; fallback here)
+            const logoutEl = document.getElementById('logout-btn');
+            if (logoutEl && typeof logout === 'function') {
+                logoutEl.addEventListener('click', function(e){ e.preventDefault(); logout(); });
+            }
+        }
+
+        // Modal functions
+        function openProfileModal() {
+            document.getElementById('profileModal').style.display = 'block';
+        }
+
+        function openOrdersModal() {
+            document.getElementById('ordersModal').style.display = 'block';
+            loadOrderHistory();
+        }
+
+        function openAddressModal() {
+            document.getElementById('addressModal').style.display = 'block';
+            displayAddresses();
+        }
+
+        // Cart functions
+        function openCart() {
+            const cart = document.getElementById('shoppingCart');
+            const overlay = document.getElementById('cartOverlay');
+            cart.classList.add('active');
+            overlay.classList.add('active');
+            updateCartDisplay();
+        }
+
+        function closeCart() {
+            const cart = document.getElementById('shoppingCart');
+            const overlay = document.getElementById('cartOverlay');
+            cart.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        async function updateCartDisplay() {
+            const cartBody = document.getElementById('cartBody');
+            const itemCount = document.getElementById('itemCount');
+            const subtotalAmount = document.getElementById('subtotalAmount');
+
+            // Fetch cart from database
+            try {
+                const response = await fetch(((window.API_BASE||'').replace(/\/$/,'') + '/cart.php?action=getCart'), {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch cart');
+                }
+
+                const data = await response.json();
+                if (data.status !== 'success') {
+                    throw new Error(data.message || 'Failed to load cart');
+                }
+
+                const cartItems = data.data.cart || [];
+                const subtotal = data.data.subtotal || 0;
+                const totalItems = data.data.item_count || 0;
+
+                // Update item count
+                itemCount.textContent = `(${totalItems} item${totalItems !== 1 ? 's' : ''})`;
+
+                // Update subtotal
+                subtotalAmount.textContent = `$${subtotal.toFixed(2)}`;
+
+                // Display cart items
+                if (cartItems.length === 0) {
+                    cartBody.innerHTML = `
+                        <div class="empty-cart">
+                            <i class="fal fa-shopping-bag"></i>
+                            <h3>Your cart is empty</h3>
+                            <p>Add some plants to get started!</p>
+                            <button class="btn-primary" onclick="window.location.href='shop.html'" style="margin-top: 1rem;">Shop Now</button>
+                        </div>
+                    `;
+                } else {
+                    cartBody.innerHTML = cartItems.map(item => `
+                        <div class="cart-item">
+                            <img src="${item.image_url || 'placeholder.jpg'}" alt="${item.name}" class="cart-item-image">
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">$${parseFloat(item.price).toFixed(2)} x ${item.quantity}</div>
+                            </div>
+                            <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
+
+                // Also update dashboard cart count
+                loadDashboardCounts();
+            } catch (error) {
+                console.error('Error loading cart:', error);
+                cartBody.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fal fa-shopping-bag"></i>
+                        <h3>Error loading cart</h3>
+                        <p>Please try again later</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function removeFromCart(cartId) {
+            try {
+                const response = await fetch(((window.API_BASE||'').replace(/\/$/,'') + '/cart.php?action=removeFromCart'), {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ cart_id: cartId })
+                });
+
+                const data = await response.json();
+                if (data.status === 'success') {
+                    console.log('✅ Item removed from cart');
+                    // Update display
+                    updateCartDisplay();
+                } else {
+                    console.error('Failed to remove item:', data.message);
+                    alert('Failed to remove item from cart');
+                }
+            } catch (error) {
+                console.error('Error removing from cart:', error);
+                alert('Error removing item from cart');
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            // Reset forms
+            const forms = document.querySelectorAll('#' + modalId + ' form');
+            forms.forEach(form => form.reset());
+            hideMessages();
+        }
+
+        // Profile Management Functions
+        function loadUserProfile() {
+            if (currentUser) {
+                document.getElementById('firstName').value = currentUser.firstName || '';
+                document.getElementById('lastName').value = currentUser.lastName || '';
+                document.getElementById('email').value = currentUser.email || '';
+                document.getElementById('phone').value = currentUser.phone || '';
+            }
+        }
+
+        function handleProfileUpdate(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const profileData = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (profileData.newPassword && profileData.newPassword !== profileData.confirmPassword) {
+                showMessage('profileMessage', 'Passwords do not match', 'error');
+                return;
+            }
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Update current user data
+                currentUser.firstName = profileData.firstName;
+                currentUser.lastName = profileData.lastName;
+                currentUser.email = profileData.email;
+                currentUser.phone = profileData.phone;
+                
+                // Update display
+                document.getElementById('userName').textContent = currentUser.firstName;
+                
+                // Save to localStorage (in real app, save to server)
+                localStorage.setItem('user', JSON.stringify(currentUser));
+                
+                showMessage('profileMessage', 'Profile updated successfully!', 'success');
+                
+                // Clear password fields
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmPassword').value = '';
+            }, 1000);
+        }
+
+        // Load dashboard counts for cart and orders
+        async function loadDashboardCounts() {
+            // Load cart count from database
+            try {
+                const response = await fetch(((window.API_BASE||'').replace(/\/$/,'') + '/cart.php?action=getCart'), {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.status === 'success' && data.data && data.data.cart) {
+                        const itemCount = data.data.item_count || 0;
+                        if (itemCount === 0) {
+                            document.getElementById('cart-count').textContent = 'Your cart is empty';
+                        } else {
+                            document.getElementById('cart-count').textContent = `${itemCount} item${itemCount !== 1 ? 's' : ''} in your cart`;
+                        }
+                    } else {
+                        document.getElementById('cart-count').textContent = 'Your cart is empty';
+                    }
+                } else {
+                    document.getElementById('cart-count').textContent = 'Your cart is empty';
+                }
+            } catch (e) {
+                console.error('Error loading cart count:', e);
+                document.getElementById('cart-count').textContent = 'Your cart is empty';
+            }
+
+            // Load orders count
+            try {
+                const response = await fetch(((window.API_BASE||'').replace(/\/$/,'') + '/orders.php?action=getOrders'), {
+                    method: 'GET',
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.status === 'success' && data.data && data.data.length > 0) {
+                        const orderCount = data.data.length;
+                        document.getElementById('orders-count').textContent = `You have ${orderCount} order${orderCount !== 1 ? 's' : ''}`;
+                    } else {
+                        document.getElementById('orders-count').textContent = 'No orders yet. Start shopping!';
+                    }
+                } else {
+                    document.getElementById('orders-count').textContent = 'No orders yet. Start shopping!';
+                }
+            } catch (error) {
+                document.getElementById('orders-count').textContent = 'No orders yet. Start shopping!';
+            }
+        }
+
+        async function loadOrderHistory() {
+            const tbody = document.getElementById('ordersTableBody');
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">Loading orders...</td></tr>';
+
+            try {
+                // Fetch real orders from API
+                const response = await fetch(((window.API_BASE||'').replace(/\/$/,'') + '/orders.php?action=getOrders'), {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.status === 'success' && data.data && data.data.length > 0) {
+                        userOrders = data.data;
+                        tbody.innerHTML = '';
+                        userOrders.forEach(order => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${order.order_number}</td>
+                                <td>${new Date(order.created_at).toLocaleDateString()}</td>
+                                <td>${order.items_count} item${order.items_count !== 1 ? 's' : ''}</td>
+                                <td>$${parseFloat(order.total_amount).toFixed(2)}</td>
+                                <td><span class="status-badge status-${order.status}">${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span></td>
+                            `;
+                            tbody.appendChild(row);
+                        });
+                    } else {
+                        tbody.innerHTML = `
+                            <tr><td colspan="5" style="text-align: center; padding: 2rem;">
+                                <div style="color: #666;">
+                                    <i class="fas fa-shopping-bag" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                                    <p style="margin-bottom: 1rem;">No orders yet</p>
+                                    <button class="btn-primary" onclick="window.location.href='shop.html'">Start Shopping</button>
+                                </div>
+                            </td></tr>
+                        `;
+                    }
+                } else {
+                    // Fallback to empty state
+                    tbody.innerHTML = `
+                        <tr><td colspan="5" style="text-align: center; padding: 2rem;">
+                            <div style="color: #666;">
+                                <i class="fas fa-shopping-bag" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                                <p style="margin-bottom: 1rem;">No orders yet</p>
+                                <button class="btn-primary" onclick="window.location.href='shop.html'">Start Shopping</button>
+                            </div>
+                        </td></tr>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading orders:', error);
+                tbody.innerHTML = `
+                    <tr><td colspan="5" style="text-align: center; padding: 2rem;">
+                        <div style="color: #666;">
+                            <i class="fas fa-shopping-bag" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                            <p style="margin-bottom: 1rem;">No orders yet</p>
+                            <button class="btn-primary" onclick="window.location.href='shop.html'">Start Shopping</button>
+                        </div>
+                    </td></tr>
+                `;
+            }
+        }
+
+        // Address Management Functions
+        function loadSampleAddresses() {
+            userAddresses = [
+                {
+                    id: 1,
+                    name: 'Home',
+                    fullName: 'John Doe',
+                    street: '123 Garden Street',
+                    city: 'Green Valley',
+                    state: 'CA',
+                    zip: '90210',
+                    country: 'US',
+                    isDefault: true
+                },
+                {
+                    id: 2,
+                    name: 'Office',
+                    fullName: 'John Doe',
+                    street: '456 Business Ave',
+                    city: 'Downtown',
+                    state: 'CA',
+                    zip: '90211',
+                    country: 'US',
+                    isDefault: false
+                }
+            ];
+        }
+
+        function displayAddresses() {
+            const container = document.getElementById('addressesList');
+            container.innerHTML = '';
+            
+            if (userAddresses.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666;">No addresses saved</p>';
+                return;
+            }
+            
+            userAddresses.forEach(address => {
+                const addressCard = document.createElement('div');
+                addressCard.className = `address-card ${address.isDefault ? 'default' : ''}`;
+                addressCard.innerHTML = `
+                    ${address.isDefault ? '<div class="default-badge">Default</div>' : ''}
+                    <h4>${address.name}</h4>
+                    <p><strong>${address.fullName}</strong></p>
+                    <p>${address.street}</p>
+                    <p>${address.city}, ${address.state} ${address.zip}</p>
+                    <p>${address.country}</p>
+                    <div class="address-actions">
+                        <button class="btn-secondary btn-small" onclick="editAddress(${address.id})">Edit</button>
+                        <button class="btn-secondary btn-small" onclick="deleteAddress(${address.id})">Delete</button>
+                        ${!address.isDefault ? `<button class="btn-primary btn-small" onclick="setDefaultAddress(${address.id})">Set Default</button>` : ''}
+                    </div>
+                `;
+                container.appendChild(addressCard);
+            });
+        }
+
+        function showAddAddressForm() {
+            document.getElementById('addAddressForm').style.display = 'block';
+        }
+
+        function hideAddAddressForm() {
+            document.getElementById('addAddressForm').style.display = 'none';
+            document.getElementById('addressForm').reset();
+        }
+
+        function handleAddressAdd(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const addressData = Object.fromEntries(formData);
+            
+            // Create new address
+            const newAddress = {
+                id: Date.now(), // Simple ID generation
+                name: addressData.addressName,
+                fullName: addressData.fullName,
+                street: addressData.streetAddress,
+                city: addressData.city,
+                state: addressData.state,
+                zip: addressData.zipCode,
+                country: addressData.country,
+                isDefault: userAddresses.length === 0 // First address is default
+            };
+            
+            userAddresses.push(newAddress);
+            displayAddresses();
+            hideAddAddressForm();
+            showMessage('addressMessage', 'Address added successfully!', 'success');
+        }
+
+        function editAddress(id) {
+            // For demo, just show alert. In real app, populate form with address data
+            alert('Edit functionality would populate the form with address data for editing');
+        }
+
+        function deleteAddress(id) {
+            if (confirm('Are you sure you want to delete this address?')) {
+                userAddresses = userAddresses.filter(addr => addr.id !== id);
+                displayAddresses();
+                showMessage('addressMessage', 'Address deleted successfully!', 'success');
+            }
+        }
+
+        function setDefaultAddress(id) {
+            userAddresses.forEach(addr => {
+                addr.isDefault = addr.id === id;
+            });
+            displayAddresses();
+            showMessage('addressMessage', 'Default address updated!', 'success');
+        }
+
+        // Utility Functions
+        function showMessage(elementId, message, type) {
+            const messageEl = document.getElementById(elementId);
+            messageEl.textContent = message;
+            messageEl.className = `message ${type}`;
+            messageEl.style.display = 'block';
+            
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+
+        function hideMessages() {
+            const messages = document.querySelectorAll('.message');
+            messages.forEach(msg => msg.style.display = 'none');
+        }
+
+        function handleLogout() {
+            if (typeof logout === 'function') {
+                logout();
+            } else {
+                // Fallback if auth.js not loaded
+                localStorage.removeItem('user');
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Close cart when clicking overlay
+            const overlay = document.getElementById('cartOverlay');
+            if (event.target === overlay) {
+                closeCart();
+            }
+        }
+
+        // Close cart on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCart();
+            }
+        });
+
+        // Debug info
+        document.getElementById('debug-info').textContent = 'Dashboard loaded successfully';
+    </script>
+   
+<script src="js/cart-injector.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>
+

@@ -19,7 +19,7 @@
   <body class="home-page">
 <header id="header">
    <a href="e garden.html">
-  <img class="logo" src="e garden logo1 copy.png" alt="Logo">
+<img class="logo" src="images/e garden logo1 copy.png" alt="Logo">
 </a>
 
 
@@ -32,6 +32,7 @@
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </nav>
+    
 
     <div id="icons">
         <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
@@ -131,49 +132,62 @@
 </div>
 <h1> Most Popular Categories </h1>
 <div class="cate" id="cate">
-  <section class="categorie">
-    <div class="plant-image-container">
-      <img src="rose2.png" class="plant-image1">
-    </div>
-    <h4>Indoor Plants →</h4>
-  </section>
-  <section class="categorie">
-    <div class="plant-image-container">
-      <img src="rose2.png" class="plant-image1">
-    </div>
-    <h4>Outdoor Plants →</h4>
-  </section>
-  <section class="categorie">
-    <div class="plant-image-container">
-      <img src="rose2.png" class="plant-image1">
-    </div>
-    <h4>Pet-Friendly Plants →</h4>
-  </section>
-  <section class="categorie">
-    <div class="plant-image-container">
-      <img src="rose2.png" class="plant-image1">
-    </div>
-    <h4>
-      Easy-Care Plants →</h4>
-  </section>
-  <section class="categorie">
-    <div class="plant-image-container">
-      <img src="rose2.png" class="plant-image1">
-    </div>
-    <h4>Orchids →</h4>
-  </section>
-  <section class="categorie">
-    <div class="plant-image-container">
-      <img src="rose2.png" class="plant-image1">
-    </div>
-    <h4>Large Plants →</h4>
-  </section>
-  <section class="categorie">
-    <div class="plant-image-container">
-      <img src="rose2.png" class="plant-image1">
-    </div>
-    <h4>Plant Care →</h4>
-  </section>
+  <a href="indoor-plants.html" style="text-decoration: none; color: inherit;">
+    <section class="categorie">
+      <div class="plant-image-container">
+        <img src="images/indoor.jpg" class="plant-image1">
+      </div>
+      <h4>Indoor Plants →</h4>
+    </section>
+  </a>
+  <a href="outdoor-plants.html" style="text-decoration: none; color: inherit;">
+    <section class="categorie">
+      <div class="plant-image-container">
+        <img src="images/outdoors.jpg" class="plant-image1">
+      </div>
+      <h4>Outdoor Plants →</h4>
+    </section>
+  </a>
+  <a href="pet-friendly-plants.html" style="text-decoration: none; color: inherit;">
+    <section class="categorie">
+      <div class="plant-image-container">
+        <img src="images/pet1.jpeg" class="plant-image1">
+      </div>
+      <h4>Pet-Friendly Plants →</h4>
+    </section>
+  </a>
+<a href="shop.html?openFilter=beginner" style="text-decoration: none; color: inherit;">
+    <section class="categorie">
+      <div class="plant-image-container">
+        <img src="images/easycare1.jpg" class="plant-image1">
+      </div>
+      <h4>Easy-Care Plants →</h4>
+    </section>
+</a>
+  <a href="orchids.html" style="text-decoration: none; color: inherit;">
+    <section class="categorie">
+      <div class="plant-image-container">
+        <img src="images/orchids.jpg" class="plant-image1">
+      </div>
+      <h4>Orchids →</h4>
+    </section>
+  </a>
+  <a href="expensive-plants.html" style="text-decoration: none; color: inherit;">
+    <section class="categorie">
+      <div class="plant-image-container">
+        <img src="images/largeplants.jpeg" class="plant-image1">
+      </div>
+      <h4>Expensive Plants →</h4>
+    </section>
+  </a>
+  <a href="plant-care.html" style="text-decoration: none; color: inherit;">
+    <section class="categorie">
+      <div class="plant-image-container">
+        <img src="images/caretool.jpg" class="plant-image1">
+      </div>
+      <h4>Plant Care →</h4>
+    </section>
+  </a>
 </div>
 <footer class="footer">
   <div class="container">
@@ -226,8 +240,9 @@
 </footer>
 
 
-<script src="js/products.js"></script>
+<script src="js/config.js"></script>
 <script src="js/ui.js"></script>
- <script src="js/cart-injector.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart-injector.js"></script>
 <script src="js/cart.js"></script>
 </html>

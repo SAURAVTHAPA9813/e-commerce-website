@@ -44,6 +44,26 @@ function injectCartHTML() {
     
     // Inject at end of body
     document.body.insertAdjacentHTML('beforeend', cartHTML);
+
+    // Bind checkout button defensively, even if cart.js not loaded yet
+    const secureBtn = document.querySelector('.checkout-btn');
+    if (secureBtn && !secureBtn.__bound) {
+        secureBtn.__bound = true;
+        secureBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            try {
+                const items = (window.cart && Array.isArray(window.cart.items))
+                    ? window.cart.items
+                    : JSON.parse(localStorage.getItem('cart') || '[]');
+                localStorage.setItem('cart', JSON.stringify(items || []));
+            } catch {}
+            if (typeof window.proceedToCheckout === 'function') {
+                window.proceedToCheckout();
+            } else {
+                window.location.href = 'cart.html';
+            }
+        });
+    }
 }
 
 // Auto-inject when page loads

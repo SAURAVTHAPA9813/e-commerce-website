@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment | E‑Garden</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { 
+      font-family: "Montserrat", Arial, sans-serif; 
+      margin: 0; 
+      color: #222; 
+      background: #f8f8f8;
+      overflow-x: hidden;
+    }
+    
+    .breadcrumb { 
+      font-size: 1.02rem; 
+      color: #c4c4c4; 
+      padding: 60px 48px 15px; 
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      background: #fff;
+    }
+    .breadcrumb .active { 
+      color: #222; 
+      font-weight: 700; 
+    }
+    
+    .payment-container { 
+      max-width: 1280px; 
+      margin: 0 auto; 
+      padding: 30px 40px 80px; 
+      display: grid;
+      grid-template-columns: 1fr 450px;
+      gap: 40px;
+    }
+    
+    .payment-left,
+    .payment-right { 
+      background: #fff; 
+      border-radius: 12px; 
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
+      padding: 40px;
+    }
+    
+    .payment-right {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+    }
+    
+    h2.title { 
+      font-size: 1.5rem; 
+      margin: 0 0 8px 0; 
+      font-weight: 700; 
+      color: #000; 
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #000;
+      margin: 32px 0 16px 0;
+    }
+    .label { 
+      font-size: 0.9rem; 
+      font-weight: 500; 
+      margin: 0 0 8px 0; 
+      color: #333; 
+      display: block;
+    }
+    
+    .payment-method {
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #f9f9f9;
+    }
+    .payment-method:hover {
+      border-color: #7cd49f;
+    }
+    .payment-method input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #7cd49f;
+      cursor: pointer;
+    }
+    .payment-method-label {
+      flex: 1;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #000;
+    }
+    .card-icons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .card-icon {
+      width: 38px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .card-icon.visa { background: #1a1f71; }
+    .card-icon.mastercard { background: linear-gradient(90deg, #eb001b 50%, #f79e1b 50%); }
+    .card-icon.amex { background: #006fcf; }
+    .card-icon.more {
+      background: #f0f0f0;
+      color: #666;
+      font-size: 0.75rem;
+    }
+    
+    .input-group {
+      margin-bottom: 20px;
+    }
+    .input, .select { 
+      width: 100%; 
+      padding: 14px 16px; 
+      font-size: 1rem; 
+      border-radius: 8px; 
+      border: 1.5px solid #e0e0e0; 
+      background: #fff; 
+      outline: none; 
+      transition: all 0.2s;
+      font-family: inherit;
+      color: #000;
+    }
+    .input::placeholder {
+      color: #999;
+    }
+    .input:focus, .select:focus { 
+      border-color: #7cd49f; 
+      box-shadow: 0 0 0 3px rgba(124, 212, 159, 0.1);
+    }
+    
+    .input-wrapper {
+      position: relative;
+    }
+    .input-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 0.9rem;
+    }
+    
+    .row { 
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .row-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 24px 0;
+    }
+    .checkbox-wrapper input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #7cd49f;
+      cursor: pointer;
+    }
+    .checkbox-wrapper label {
+      font-size: 0.95rem;
+      color: #333;
+      cursor: pointer;
+    }
+    
+    .pay-button { 
+      display: block; 
+      width: 100%; 
+      padding: 16px 0; 
+      margin-top: 32px; 
+      background: linear-gradient(135deg, #7cd49f 0%, #5eb880 100%);
+      border: none; 
+      border-radius: 10px; 
+      color: #fff; 
+      font-size: 1.05rem; 
+      font-weight: 700; 
+      letter-spacing: 0.03em; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+      box-shadow: 0 4px 12px rgba(124, 212, 159, 0.3);
+      font-family: inherit;
+    }
+    .pay-button:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 6px 16px rgba(124, 212, 159, 0.4);
+    }
+    .pay-button:active { 
+      transform: translateY(0); 
+    }
+    
+    .summary-title { 
+      font-size: 1.15rem; 
+      font-weight: 700; 
+      margin-bottom: 20px; 
+      color: #000; 
+    }
+    .order-list { 
+      border-bottom: 1.5px solid #f0f0f0; 
+      padding: 0 0 20px 0; 
+      margin-bottom: 20px;
+    }
+    .order-item { 
+      display: flex; 
+      gap: 16px; 
+      margin-bottom: 20px; 
+      align-items: flex-start; 
+    }
+    .thumb { 
+      width: 64px; 
+      height: 64px; 
+      border-radius: 8px; 
+      object-fit: cover; 
+      background: #f5f5f5;
+      flex-shrink: 0;
+      border: 1px solid #eee;
+    }
+    .item-details {
+      flex: 1;
+      min-width: 0;
+    }
+    .name { 
+      font-size: 0.98rem; 
+      font-weight: 600; 
+      color: #000;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .meta { 
+      font-size: 0.9rem; 
+      color: #666; 
+    }
+    .item-desc {
+      font-size: 0.88rem;
+      color: #999;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .price { 
+      font-weight: 700; 
+      color: #000; 
+      text-align: right;
+      font-size: 0.98rem;
+      white-space: nowrap;
+    }
+    
+    .promo-section {
+      margin-bottom: 20px;
+    }
+    .promo-row {
+      display: flex;
+      gap: 10px;
+    }
+    .promo-input {
+      flex: 1;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      border: 1.5px solid #e0e0e0;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .promo-input:focus {
+      border-color: #7cd49f;
+    }
+    .promo-btn {
+      background: #f5f5f5;
+      color: #333;
+      border: 1.5px solid #e0e0e0;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .promo-btn:hover {
+      background: #7cd49f;
+      border-color: #7cd49f;
+      color: #fff;
+    }
+    
+    .totals-section {
+      padding: 20px 0 0 0;
+    }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 0.98rem;
+    }
+    .total-row.subtotal {
+      color: #666;
+    }
+    .total-row.final {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #000;
+      padding-top: 12px;
+      border-top: 2px solid #f0f0f0;
+      margin-top: 12px;
+    }
+    
+    .help { 
+      font-size: 0.88rem; 
+      color: #999; 
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 1024px) { 
+      .payment-container { 
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+      .payment-right {
+        position: relative;
+        top: 0;
+      }
+      .row-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 600px) { 
+      .breadcrumb {
+        padding: 40px 20px 15px;
+      }
+      .payment-left, .payment-right { 
+        padding: 24px 20px; 
+      }
+      .row, .row-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="other.css" />
+  <script defer src="js/payment.js"></script>
+  <script defer src="js/cart.js"></script>
+  <script defer src="js/cart-injector.js"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/ui.js"></script>
+  <script defer src="js/products.js"></script>
+  <script defer src="js/auth.js"></script>
+  
+  <script>
+    function toggleCardFields() {
+      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+      const cardFields = document.getElementById('cardFields');
+      cardFields.style.display = paymentMethod === 'card' ? 'block' : 'none';
+    }
+    
+    function renderOrderSummary() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const orderList = document.getElementById('paymentOrderList');
+      const subtotalEl = document.getElementById('paymentSubtotal');
+      const totalEl = document.getElementById('paymentTotal');
+      
+      if (!orderList) return;
+      
+      if (cart.length === 0) {
+        orderList.innerHTML = '<div style="padding:20px;text-align:center;color:#999;">Your cart is empty</div>';
+        if (subtotalEl) subtotalEl.textContent = '$0.00';
+        if (totalEl) totalEl.textContent = '$0.00';
+        return;
+      }
+      
+      let subtotal = 0;
+      orderList.innerHTML = cart.map(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        return `
+          <div class="order-item">
+            <img class="thumb" src="${item.image || 'placeholder.jpg'}" alt="${item.name || ''}">
+            <div class="item-details">
+              <div class="name">${item.name || 'Product'}</div>
+              <div class="meta">x ${item.quantity || 1}</div>
+              ${item.description ? `<div class="item-desc">${item.description}</div>` : ''}
+            </div>
+            <div class="price">$${itemTotal.toFixed(2)}</div>
+          </div>
+        `;
+      }).join('');
+      
+      const shipping = subtotal > 50 ? 0 : 8.99;
+      const total = subtotal + shipping;
+      
+      if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+      if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+      
+      const shippingEl = document.getElementById('paymentShipping');
+      if (shippingEl) shippingEl.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+    }
+    
+    function applyPromoCode() {
+      const code = document.getElementById('promoCode').value.trim();
+      if (code) {
+        alert('Promo code functionality coming soon!');
+      }
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        const user = JSON.parse(localStorage.getItem('user') || 'null') || JSON.parse(localStorage.getItem('userData') || 'null');
+        if (user) {
+          const form = document.getElementById('paymentForm');
+          if (form) {
+            const email = form.querySelector('input[name="email"]');
+            const first = form.querySelector('input[name="firstName"]');
+            const last = form.querySelector('input[name="lastName"]');
+            if (email && user.email) email.value = user.email;
+            if (first && (user.firstName || user.first_name)) first.value = user.firstName || user.first_name || '';
+            if (last && (user.lastName || user.last_name)) last.value = user.lastName || user.last_name || '';
+          }
+        }
+      } catch {}
+      
+      renderOrderSummary();
+      
+      const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
+      paymentRadios.forEach(radio => {
+        radio.addEventListener('change', toggleCardFields);
+      });
+
+      // Form submit is now handled by js/payment.js
+    });
+  </script>
+  
+  </head>
+<body>
+  <header id="header">
+    <a href="e garden.html">
+      <img class="logo" src="/images/e garden logo1 copy.png" alt="Logo">
+    </a>
+    <nav id="main-nav-desktop">
+      <ul id="navbar-desktop">
+        <li><a href="shop.html">Plants</a></li>
+        <li><a href="caretool.html">Care Tools</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div id="icons">
+      <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
+      <a href="login.html"><i class="fas fa-user" id="user-icon"></i></a>
+      <a href="cart.html" id="lg-bag"><i class="fal fa-shopping-bag"></i></a>
+      <i class="fas fa-bars" id="menu-button"></i>
+    </div>
+  </header>
+
+  <div id="menu">
+    <button id="close-menu">A-</button>
+    <div id="menu-header">Menu</div>
+    <div id="navbar-container-mobile">
+      <ul id="navbar-mobile">
+        <li><a href="e garden.html">Learn</a></li>
+        <li><a href="shop.html">Plants</a></li>
+        <li><a href="caretool.html">Care Tools</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="search-overlay" class="hidden">
+    <div class="search-bar-wrapper">
+      <input type="text" class="search-input" placeholder="Search for products...">
+      <button class="search-button" id="search-submit-button" aria-label="Submit search">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    <div class="trending-searches">
+      <p class="trending-title">Trending</p>
+      <div class="trending-list">
+        <div class="trending-item" data-search-term="monstera"><i class="fas fa-search"></i> Monstera</div>
+        <div class="trending-item" data-search-term="watering can"><i class="fas fa-search"></i> Watering Can</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="breadcrumb">
+    <span>Contact &amp; Delivery</span> / <span class="active">Payment</span>
+  </div>
+  
+  <div class="payment-container">
+    <div class="payment-left">
+      <h2 class="title">Payment</h2>
+      <p class="subtitle">All transactions are secure and encrypted.</p>
+      
+      <form id="paymentForm" autocomplete="on">
+        <label class="payment-method">
+          <input type="radio" name="paymentMethod" value="card" checked>
+          <span class="payment-method-label">Credit card</span>
+          <div class="card-icons">
+            <div class="card-icon visa">VISA</div>
+            <div class="card-icon mastercard"></div>
+            <div class="card-icon amex">AMEX</div>
+            <div class="card-icon more">+5</div>
+          </div>
+        </label>
+        
+        <div id="cardFields">
+          <div class="input-group">
+            <label class="label">Card number</label>
+            <div class="input-wrapper">
+              <input class="input" name="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" />
+              <i class="fas fa-lock input-icon"></i>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="input-group">
+              <label class="label">Expiration date (MM / YY)</label>
+              <input class="input" name="expiry" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" />
+            </div>
+            <div class="input-group">
+              <label class="label">Security code</label>
+              <div class="input-wrapper">
+                <input class="input" name="cvv" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV" maxlength="4" />
+                <i class="fas fa-question-circle input-icon"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <label class="label">Name on card</label>
+            <input class="input" name="cardName" autocomplete="cc-name" placeholder="Full name" />
+          </div>
+        </div>
+        
+        <label class="payment-method" style="margin-top: 12px;">
+          <input type="radio" name="paymentMethod" value="cod">
+          <span class="payment-method-label">Cash on Delivery</span>
+        </label>
+
+        <label class="payment-method" style="margin-top: 12px;">
+          <input type="radio" name="paymentMethod" value="esewa">
+          <span class="payment-method-label">eSewa</span>
+          <div class="card-icons">
+            <img src="https://esewa.com.np/common/images/esewa_logo.png" alt="eSewa" style="width:40px; height:auto;">
+          </div>
+        </label>
+
+        <label class="payment-method" style="margin-top: 12px;">
+          <input type="radio" name="paymentMethod" value="khalti">
+          <span class="payment-method-label">Khalti</span>
+          <div class="card-icons">
+            <img src="https://khalti.com/static/img/logo.png" alt="Khalti" style="width:40px; height:auto;">
+          </div>
+        </label>
+        
+        <div class="checkbox-wrapper">
+          <input type="checkbox" id="useShippingAddress" checked>
+          <label for="useShippingAddress">Use shipping address as billing address</label>
+        </div>
+        
+        <h3 class="section-title">Billing address</h3>
+        
+        <div class="input-group">
+          <label class="label">Country/Region</label>
+          <select class="select" name="country">
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="UK">United Kingdom</option>
+            <option value="NP" selected>Nepal</option>
+          </select>
+        </div>
+        
+        <div class="input-group">
+          <label class="label">Email address</label>
+          <input class="input" type="email" name="email" autocomplete="email" placeholder="your@email.com" />
+        </div>
+
+        <div class="row">
+          <div class="input-group">
+            <label class="label">First name (optional)</label>
+            <input class="input" type="text" name="firstName" autocomplete="given-name" />
+          </div>
+          <div class="input-group">
+            <label class="label">Last name</label>
+            <input class="input" type="text" name="lastName" autocomplete="family-name" />
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label class="label">Address</label>
+          <div class="input-wrapper">
+            <input class="input" type="text" name="address" autocomplete="street-address" placeholder="Street and number" />
+            <i class="fas fa-search input-icon"></i>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label class="label">Apartment, suite, etc. (optional)</label>
+          <input class="input" type="text" name="apartment" autocomplete="address-line2" />
+        </div>
+        
+        <div class="row-3">
+          <div class="input-group">
+            <label class="label">City</label>
+            <input class="input" type="text" name="city" autocomplete="address-level2" />
+          </div>
+          <div class="input-group">
+            <label class="label">State</label>
+            <select class="select" name="state">
+              <option value="">Select state</option>
+              <option value="Bagmati">Bagmati</option>
+              <option value="Gandaki">Gandaki</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label class="label">ZIP code</label>
+            <input class="input" type="text" name="postalCode" autocomplete="postal-code" />
+          </div>
+        </div>
+        
+        <button class="pay-button" type="submit">PLACE ORDER</button>
+      </form>
+    </div>
+
+    <div class="payment-right">
+      <div class="summary-title">Your Order</div>
+      <div id="paymentOrderList" class="order-list"></div>
+      
+      <div class="promo-section">
+        <div class="promo-row">
+          <input class="promo-input" type="text" id="promoCode" placeholder="Promo code" />
+          <button class="promo-btn" onclick="applyPromoCode()">Apply</button>
+        </div>
+      </div>
+      
+      <div class="totals-section">
+        <div class="total-row subtotal">
+          <span>Subtotal</span>
+          <span id="paymentSubtotal">$0.00</span>
+        </div>
+        <div class="total-row subtotal">
+          <span>Shipping</span>
+          <span id="paymentShipping">$8.99</span>
+        </div>
+        <div class="total-row final">
+          <span>Total</span>
+          <span id="paymentTotal">$0.00</span>
+        </div>
+      </div>
+      
+      <div class="help">Taxes and additional fees calculated at checkout. Free shipping on orders over $50.</div>
+    </div>
+  </div>
+</body>
+</html>
+

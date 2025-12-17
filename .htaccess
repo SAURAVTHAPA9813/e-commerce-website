@@ -1,0 +1,56 @@
+# E Garden E-commerce - Security Headers and Configuration
+
+# Security Headers
+<IfModule mod_headers.c>
+    # Prevent MIME type sniffing
+    Header set X-Content-Type-Options "nosniff"
+
+    # Referrer Policy - only send origin for same-origin requests
+    Header set Referrer-Policy "same-origin"
+
+    # X-Frame-Options - prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+
+    # XSS Protection (for older browsers)
+    Header set X-XSS-Protection "1; mode=block"
+
+    # Content Security Policy (CSP) - Adjust as needed for production
+    # This is a permissive policy; tighten it based on your needs
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://kit.fontawesome.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://pro.fontawesome.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://pro.fontawesome.com; img-src 'self' data: https: http:; connect-src 'self' http://localhost https://ka-f.fontawesome.com; frame-ancestors 'self';"
+
+    # Permissions Policy (formerly Feature-Policy)
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Enable GZIP Compression for better performance
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml
+</IfModule>
+
+# Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
+
+# Force HTTPS (Uncomment for production with SSL)
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Custom Error Pages (create these if needed)
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html

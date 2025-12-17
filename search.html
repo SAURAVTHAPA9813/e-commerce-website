@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results - E Garden</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="other.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    .search-header { padding: 90px 24px 10px; }
+    .search-title { font-size: 1.6rem; font-weight: 800; color: #2c3e50; }
+    .search-meta { color: #666; margin-top: 6px; }
+    .search-controls { display:flex; gap:10px; align-items:center; padding: 10px 24px 0; }
+    .search-controls select { padding: 10px 12px; border:1px solid #ddd; border-radius:6px; }
+    .badge { display:inline-block; padding:4px 10px; border-radius:12px; background:#f1f3f5; color:#555; font-size:.9rem }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <a href="e garden.html"><img class="logo" src="/images/e garden logo1 copy.png" alt="Logo"></a>
+    <nav id="main-nav-desktop">
+      <ul id="navbar-desktop">
+        <li><a href="shop.html">Plants</a></li>
+        <li><a href="caretool.html">Care Tools</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div id="icons">
+      <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
+      <a href="login.html"><i class="fas fa-user" id="user-icon"></i></a>
+      <a href="cart.html" id="lg-bag"><i class="fal fa-shopping-bag"></i></a>
+      <i class="fas fa-bars" id="menu-button"></i>
+    </div>
+  </header>
+
+  <div id="menu">
+    <button id="close-menu">A-</button>
+    <div id="menu-header">Menu</div>
+    <div id="navbar-container-mobile">
+      <ul id="navbar-mobile">
+        <li><a href="e garden.html">Learn</a></li>
+        <li><a href="shop.html">Plants</a></li>
+        <li><a href="caretool.html">Care Tools</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="search-overlay" class="hidden">
+    <div class="search-bar-wrapper">
+      <input type="text" class="search-input" placeholder="Search for plants or tools...">
+      <button class="search-button" id="search-submit-button" aria-label="Submit search">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    <div class="trending-searches">
+      <p class="trending-title">Trending</p>
+      <div class="trending-list">
+        <div class="trending-item" data-search-term="monstera"><i class="fas fa-search"></i> Monstera</div>
+        <div class="trending-item" data-search-term="watering"><i class="fas fa-search"></i> Watering</div>
+        <div class="trending-item" data-search-term="succulent"><i class="fas fa-search"></i> Succulent</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="search-header">
+    <div class="search-title">Search Results</div>
+    <div class="search-meta"><span id="searchQuery" class="badge"></span> <span id="resultCount"></span></div>
+  </section>
+  <div class="search-controls">
+    <label for="searchSort">Sort by:</label>
+    <select id="searchSort">
+      <option value="">Featured</option>
+      <option value="highest-price">Highest price</option>
+      <option value="lowest-price">Lowest price</option>
+      <option value="newest">Newest</option>
+      <option value="most-popular">Most popular</option>
+    </select>
+  </div>
+
+  <div class="product-grid" id="searchGrid">
+    <p>Loading results...</p>
+  </div>
+  <div id="searchPager" style="display:flex; gap:8px; align-items:center; justify-content:center; padding:16px 24px;">
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/cart-injector.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

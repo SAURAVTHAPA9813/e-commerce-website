@@ -1,138 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Ecommerce Website</title>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-  
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Checkout | E-Garden</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="other.css">
-  <script src="https://kit.fontawesome.com" crossorigin="anonymous"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Berkshire+Swash&family=Comic+Neue:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Lato:ital,wght@0,400;0,700;0,900;1,700&family=Lexend+Deca:wght@500&family=Lexend:wght@500&family=Montserrat:wght@500&family=Open+Sans:wght@500;800&family=Roboto:wght@100;400&family=Sue+Ellen+Francisco&family=Work+Sans:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900;&display=swap">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Berkshire+Swash&family=Comic+Neue:wght@700&family=Gentium+Book+Plus:wght@400;700&family=Lato:wght@400;700;900&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+    body {
+        font-family: "Montserrat", Arial, sans-serif;
+        background: #fff;
+        margin: 0;
+         overflow-x: hidden;
+        color: #222;
+    }
+    .breadcrumb {
+        font-size: 1.02rem;
+        color: #c4c4c4;
+        padding: 60px 48px 15px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+    }
+    .breadcrumb .active {
+        color: #222;
+        font-weight: bold;
+    }
+  .container {
+    max-width: 1150px;
+    margin: 0 auto;  /* ← Fixed: centers the container */
+    display: flex;
+    gap: 44px;
+    align-items: flex-start;
+    padding: 23px 44px 70px 44px;
+}
+    .checkout-left, .checkout-right {
+        background: #fff;
+        border-radius: 18px;
+    }
+    .checkout-left {
+        flex: 1.2;
+        min-width: 320px;
+        box-shadow: 0 0 18px rgba(100,100,100,0.06);
+        padding: 36px 38px 36px 42px;
+    }
+    .checkout-right {
+        flex: 1.1;
+        min-width: 320px;
+        box-shadow: 0 0 18px rgba(100,100,100,0.09);
+        padding: 36px 36px 28px 36px;
+    }
+    h2.section-title {
+        font-size: 1.23rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin: 8px 0 18px 0;
+        letter-spacing: 0.02em;
+        color: #282828;
+    }
+    .checkout-label {
+        font-size: 1.06rem;
+        font-weight: 600;
+        margin: 18px 10px 6px 0;
+        color: #363636;
+    }
+    .checkout-input, .checkout-input[type="email"] {
+        width: 100%;
+        padding: 13px 15px;
+        font-size: 1.05rem;
+        border-radius: 7px;
+        border: 1px solid #e7e7e7;
+        margin-bottom: 4px;
+        outline: none;
+        transition: border 0.2s;
+        background: #fafafa;
+    }
+    .checkout-input:focus {
+        border: 1.3px solid #7cd49f;
+    }
+    .checkbox-row {
+        margin: 13px 0 20px;
+        font-size: 0.96rem;
+        color: #333;
+        display: flex;
+        align-items: center;
+    }
+    .checkbox-row input[type="checkbox"] {
+        margin-right: 8px;
+    }
+   .checkout-button {
+  display: block;
+  width: 100%;
+  padding: 13px 0;
+  margin-top: 18px;
+
+  background: #e0e0e0; /* Light gray background */
+  border: none;
+  border-radius: 30px;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  box-shadow: 8px 8px 15px #bebebe,
+              -8px -8px 15px #ffffff;
+}
+
+.checkout-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 4px 4px 8px #bebebe,
+              -4px -4px 8px #ffffff;
+}
+
+.checkout-button:active {
+  box-shadow: inset 6px 6px 10px #bebebe,
+              inset -6px -6px 10px #ffffff;
+  transform: translateY(1px);
+}
+
+    /* Order summary styling */
+    .order-summary-title {
+        font-size: 1.09rem;
+        font-weight: 800;
+        margin-bottom: 18px;
+        letter-spacing: 0.06em;
+        color: #212222;
+        text-transform: uppercase;
+    }
+    .order-items-list {
+        border-bottom: 1.5px solid #f2f1f1;
+        padding: 0 16px 15px 16px; /* even left/right gutter for readability */
+    }
+    .order-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 18px;
+        gap: 15px;
+        padding-right: 6px; /* extra breathing room for price column */
+    }
+    .item-image-small {
+        width: 52px;
+        height: 52px;
+        border-radius: 9px;
+        object-fit: cover;
+        background: #eee;
+    }
+    .item-details {
+        flex: 1;
+    }
+    .item-name {
+        font-size: 1rem;
+        color: #222d21;
+        font-weight: 700;
+        margin-bottom: 3px;
+        line-height: 1.35;
+    }
+    .item-variant {
+        font-size: 0.96rem;
+        color: #a78c6d;
+        font-weight: 500;
+        margin-right: 5px;
+    }
+    .item-quantity {
+        font-size: 0.97rem;
+        color: #888;
+    }
+    .item-desc {
+        font-size: 0.92rem;
+        color: #999;
+        margin-top: 2px;
+        line-height: 1.35;
+    }
+    .item-price {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #181818;
+        min-width: 72px;
+        text-align: right;
+        padding-right: 2px; /* prevent hugging container edge */
+    }
+    .promo-row {
+        margin: 28px 0 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .promo-input {
+        flex: 1;
+        padding: 10px 10px;
+        font-size: 1.01rem;
+        border-radius: 8px;
+        border: 1.2px solid #efeded;
+        background: #f7f7f7;
+    }
+    .promo-btn {
+        background: #eee;
+        color: #777;
+        border: none;
+        padding: 9px 21px;
+        border-radius: 7px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.18s;
+    }
+    .promo-btn:hover {
+        background: #fad1ba;
+        color: #d86f47;
+    }
+    .order-summary-totals {
+        margin-top: 13px;
+        font-size: 1.08rem;
+        padding: 0 16px; /* consistent left/right gutter */
+    }
+    .subtotal-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 700;
+        color: #222;
+        padding: 12px 0 0 0;
+    }
+    .help-text {
+        font-size: 0.98rem;
+        color: #aaa;
+        margin: 9px 0 0 0;
+    }
+    /* Responsive */
+    @media (max-width: 960px) {
+        .container { flex-direction: column; padding: 23px 11px 64px 11px;}
+        .checkout-left, .checkout-right {min-width:unset; width: 100%;}
+    }
+    @media (max-width:600px) {
+        .checkout-left, .checkout-right {padding: 22px 5vw;}
+    }
+    </style>
+</head>
+<body>
 <header id="header">
    <a href="e garden.html">
-  <img class="logo" src="e garden logo1 copy.png" alt="Logo">
-</a>
+      <img class="logo" src="/images/e garden logo1 copy.png" alt="Logo" alt="Logo">
+   </a>
+   <nav id="main-nav-desktop">
+      <ul id="navbar-desktop">
+         <li><a href="shop.html">Plants</a></li>
+         <li><a href="caretool.html">Care Tools</a></li>
+         <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+   </nav>
+   <div id="icons">
+      <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
+      <a href="login.html"><i class="fas fa-user" id="user-icon"></i></a>
+      <a href="cart.html" id="lg-bag"><i class="fal fa-shopping-bag"></i></a>
+      <i class="fas fa-bars" id="menu-button"></i>
+   </div>
+ </header>
 
+ <!-- Mobile Menu -->
+ <div id="menu">
+   <button id="close-menu">A-</button>
+   <div id="menu-header">Menu</div>
+   <div id="navbar-container-mobile">
+      <ul id="navbar-mobile">
+         <li><a href="e garden.html">Learn</a></li>
+         <li><a href="shop.html">Plants</a></li>
+         <li><a href="caretool.html">Care Tools</a></li>
+         <li><a href="about.html">About Us</a></li>
+         <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+   </div>
+ </div>
 
-    <!-- Main Navigation for Desktop View -->
-    <nav id="main-nav-desktop">
-        <ul id="navbar-desktop">
-            <li><a href="shop.html">Plants</a></li>
-            <li><a href="caretool.html">Care Tool</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </nav>
-
-    <div id="icons">
-        <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
-        <a href="login.html">
-            <i class="fas fa-user" id="user-icon"></i>
-        </a>
-        <a href="cart.html" id="lg-bag">
-            <i class="fal fa-shopping-bag"></i>
-        </a>
-        <!-- The hamburger menu button (will be hidden on desktop, shown on mobile) -->
-        <i class="fas fa-bars" id="menu-button"></i>
-    </div>
-</header>
-
-
-<!-- The OFF-CANVAS menu (for mobile/tablet) - this remains outside the header's main flow -->
-<div id="menu">
-    <button id="close-menu">×</button>
-    <div id="menu-header">Menu Title</div>
-    <div id="navbar-container-mobile">
-        <ul id="navbar-mobile">
-            <li><a href="e garden.html">Learn</a></li>
-            <li><a href="shop.html">Plants</a></li>
-            <li><a href="caretool.html">Care Tool</a></li>
- 
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </div>
-</div>
-  
-
- 
+ <!-- Search Overlay -->
  <div id="search-overlay" class="hidden">
-    <div class="search-bar-wrapper glass-effect">
-        <input type="text" class="search-input" placeholder="Search">
-        <!-- The search button, integrated into the bar -->
-        <button class="search-button" id="search-submit-button" aria-label="Submit search"><i class="fas fa-search"></i></button>
-    </div>
-    <div class="trending-searches">
-        <p class="trending-title">Trending</p>
-        <div class="trending-list">
-            <!-- Each trending item is now a div with an icon -->
-            <div class="trending-item" data-search-term="wreath"><i class="fas fa-search"></i> Wreath</div>
-            <div class="trending-item" data-search-term="vase"><i class="fas fa-search"></i> Vase</div>
-            <div class="trending-item" data-search-term="planter"><i class="fas fa-search"></i> Planter</div>
-            <div class="trending-item" data-search-term="candle"><i class="fas fa-search"></i> Candle</div>
-            <div class="trending-item" data-search-term="plant stand"><i class="fas fa-search"></i> Plant Stand</div>
-        </div>
-    </div>
-    
+   <div class="search-bar-wrapper">
+      <input type="text" class="search-input" placeholder="Search for products...">
+      <button class="search-button" id="search-submit-button" aria-label="Submit search">
+         <i class="fas fa-search"></i>
+      </button>
+   </div>
+   <div class="trending-searches">
+      <p class="trending-title">Trending</p>
+      <div class="trending-list">
+         <div class="trending-item" data-search-term="monstera"><i class="fas fa-search"></i> Monstera</div>
+         <div class="trending-item" data-search-term="watering can"><i class="fas fa-search"></i> Watering Can</div>
+      </div>
+   </div>
+ </div>
+<div class="breadcrumb">
+    <span class="active">01. Contact &amp; Delivery</span> / <span style="color:#ccc">02. Payment</span>
 </div>
-    <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cartOverlay"></div>
-
-    <!-- Shopping Cart Slider -->
-    <div class="shopping-cart" id="shoppingCart">
-        <!-- Cart Header -->
-        <div class="cart-header">
-            <h2 class="cart-title">
-                Your Cart
-                <span class="item-count" id="itemCount">(0 items)</span>
-            </h2>
-            <button class="cart-close" id="cartClose">
-                <i class="fas fa-times"></i>
-            </button>
+<div class="container">
+    <!-- Left: Form -->
+    <div class="checkout-left">
+        <h2 class="section-title">01. YOUR INFORMATION</h2>
+        <div style="font-size: 0.98rem; margin-bottom: 15px;">
+            Already have an account? <a href="login.html" style="color:#d48c7c;text-decoration:underline;font-weight:600;">Sign in by clicking here.</a>
         </div>
-
-        <!-- Cart Body -->
-        <div class="cart-body" id="cartBody">
-            <div class="empty-cart">
-                <i class="fal fa-shopping-bag"></i>
-                <h3>Your cart is empty</h3>
-                <p>Add some plants to get started!</p>
-            </div>
+        <form id="checkoutForm" autocomplete="on">
+            <div class="checkout-label">Email</div>
+            <input class="checkout-input" type="email" name="email" required placeholder="you@email.com">
+            <div class="checkout-label">First Name</div>
+            <input class="checkout-input" type="text" name="firstName" required>
+            <div class="checkout-label">Last Name</div>
+            <input class="checkout-input" type="text" name="lastName" required>
+            <label class="checkbox-row">
+                <input type="checkbox" name="newsletter" checked>
+                Receive plant care reminders & new product announcements
+            </label>
+            <button type="submit" class="checkout-button">CONTINUE</button>
+        </form>
+    </div>
+    <!-- Right: Order summary -->
+    <div class="checkout-right">
+        <div class="order-summary-title">YOUR ORDER</div>
+        <div class="order-items-list" id="orderSummaryItems">
+            <!-- JavaScript will generate order items here from cart -->
         </div>
-
-        <!-- Cart Footer -->
-        <div class="cart-footer">
-            <div class="subtotal">
-                <span class="subtotal-label">Subtotal</span>
-                <span class="subtotal-amount" id="subtotalAmount">$0.00</span>
+        <form class="promo-row" onsubmit="event.preventDefault(); applyPromoCode();">
+            <input class="promo-input" type="text" id="promoCode" placeholder="Promo code">
+            <button class="promo-btn">Apply</button>
+        </form>
+        <div class="order-summary-totals">
+            <div class="subtotal-row">
+                <span>Subtotal</span>
+                <span id="orderSubtotal">$0.00</span>
             </div>
-            <button class="checkout-btn" onclick="proceedToCheckout()">
-                Secure Checkout
-            </button>
+            <div class="help-text">Enter address to see total cost</div>
         </div>
     </div>
+</div>
+<script>
 
-    <!-- DEMO CONTENT - Replace with your existing product display -->
-    
-        <h1>Demo Products</h1>
 
-        <div class="scroll-container" id="scroll_container"></div>
-   
-         
-</body>
 
-  <script src="js/cart.js"></script>
-    <script src="js/products.js"></script>
+    // Get your cart items array saved by SimpleCart
+function getCart() {
+    return JSON.parse(localStorage.getItem('cart') || '[]');
+}
+
+
+function renderOrderSummary() {
+    const items = getCart();
+    const orderSummary = document.getElementById('orderSummaryItems');
+    const subtotalElem = document.getElementById('orderSubtotal');
+    if (!orderSummary || !subtotalElem) return;
+
+    if (items.length === 0) {
+        orderSummary.innerHTML = '<div style="padding:22px;text-align:center;color:#aaa;">Cart is empty.</div>';
+        subtotalElem.textContent = "$0.00";
+        return;
+    }
+    let subtotal = 0;
+    orderSummary.innerHTML = items.map(item => {
+        subtotal += item.price * item.quantity;
+        return `
+        <div class="order-item">
+            <img class="item-image-small" src="${item.image||'data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'52\' height=\'52\'><rect width=\'100%\' height=\'100%\' fill=\'%23e9ecef\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%236c757d\' font-size=\'10\' font-family=\'Arial\'>No Image</text></svg>'}" alt="${item.name||''}">
+            <div class="item-details">
+                <div class="item-name">${item.name}</div>
+                <div>
+                   <span class="item-quantity">x ${item.quantity || 1}</span>
+                </div>
+                <div class="item-desc">${item.description || ''}</div>
+            </div>
+            <div class="item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+        </div>
+        `;
+    }).join('');
+    subtotalElem.textContent = `$${subtotal.toFixed(2)}`;
+}
+
+// Fake promo code functionality for demo
+function applyPromoCode() {
+    alert('Promo code functionality coming soon!');
+}
+
+// Refresh order summary at load
+document.addEventListener('DOMContentLoaded', function(){
+    // Prefill user info if logged in
+    try {
+        const user = JSON.parse(localStorage.getItem('user') || 'null') || JSON.parse(localStorage.getItem('userData') || 'null');
+        if (user) {
+            const form = document.getElementById('checkoutForm');
+            if (form) {
+                const email = form.querySelector('input[name=\"email\"]');
+                const first = form.querySelector('input[name=\"firstName\"]');
+                const last = form.querySelector('input[name=\"lastName\"]');
+                if (email && user.email) email.value = user.email;
+                if (first && (user.firstName || user.first_name)) first.value = user.firstName || user.first_name || '';
+                if (last && (user.lastName || user.last_name)) last.value = user.lastName || user.last_name || '';
+            }
+        }
+    } catch {}
+    renderOrderSummary();
+});
+
+// (OPTIONAL) On continue, move to payment page (validate and store as needed)
+document.getElementById('checkoutForm').addEventListener('submit', function(event){
+    event.preventDefault();
+    // Persist basic contact info for payment step
+    try {
+        const fd = new FormData(this);
+        const info = Object.fromEntries(fd.entries());
+        localStorage.setItem('checkoutInfo', JSON.stringify(info));
+    } catch {}
+    // Navigate to payment step
+    window.location.href = 'payment.html';
+});
+</script>
+<script src="js/config.js"></script>
 <script src="js/ui.js"></script>
-
+<script src="js/cart-injector.js"></script>
+<script src="js/cart.js"></script>
+</body>
 </html>

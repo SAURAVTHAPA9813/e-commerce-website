@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terracotta Plant Pot 6" - E Garden</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Product Container */
+        .product-container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        /* Gallery Section */
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 1rem;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: #3d6b1f;
+            transform: translateY(-2px);
+        }
+
+        /* Product Info */
+        .product-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .product-category {
+            color: #3d6b1f;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d5016;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.1rem;
+        }
+
+        .rating-text {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .product-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d5016;
+            margin: 1.5rem 0;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        /* Size Selection */
+        .size-selection {
+            margin-bottom: 2rem;
+        }
+
+        .selection-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        .size-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .option-btn {
+            padding: 0.875rem 1.5rem;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .option-btn:hover {
+            border-color: #3d6b1f;
+            background: #f8fdf5;
+        }
+
+        .option-btn.selected {
+            border-color: #3d6b1f;
+            background: #3d6b1f;
+            color: white;
+        }
+
+        /* Quantity Selector */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .quantity-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #3d6b1f;
+            transition: background 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: #f8fdf5;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Add to Cart Button */
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3);
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 80, 22, 0.4);
+        }
+
+        /* Pro Tip */
+        .pro-tip {
+            background: linear-gradient(135deg, #fff8e1 0%, #fffbf0 100%);
+            border-left: 4px solid #ffd700;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .pro-tip-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .pro-tip-content {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Product Features */
+        .product-features {
+            margin: 2rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: #f8fdf5;
+            border-radius: 12px;
+            border: 1px solid #e8f5e0;
+        }
+
+        .feature-icon {
+            font-size: 1.75rem;
+            color: #3d6b1f;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 1.1rem;
+            color: #2d5016;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Accordion Sections */
+        .accordion {
+            margin: 2rem 0;
+        }
+
+        .accordion-item {
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2d5016;
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: #f8fdf5;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s;
+            color: #3d6b1f;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content-inner {
+            padding: 0 1.5rem 1.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .accordion-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .accordion-content li:before {
+            content: "•";
+            color: #3d6b1f;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-gallery {
+                position: static;
+            }
+
+            .main-image {
+                height: 400px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-title {
+                font-size: 2rem;
+            }
+
+            .product-price {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .product-container {
+                padding: 0 1rem;
+                margin: 2rem auto;
+            }
+
+            .product-info {
+                padding: 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .nav-links a span {
+                display: none;
+            }
+
+            .size-options {
+                flex-direction: column;
+            }
+
+            .option-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../e garden.html" class="logo">
+                <i class="fas fa-leaf"></i>
+                E Garden
+            </a>
+            <ul class="nav-links">
+                <li><a href="../e garden.html"><span>Home</span></a></li>
+                <li><a href="../shop.html"><span>Shop</span></a></li>
+                <li><a href="../contact.html"><span>Contact</span></a></li>
+                <li>
+                    <a href="../cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="product-container">
+        <div class="product-gallery">
+            <img src="../plant pot1.jpg" alt="Terracotta Plant Pot 6 Inch" class="main-image" id="mainImage">
+            <div class="thumbnail-container">
+                <img src="../plant pot1.jpg" alt="Pot View 1" class="thumbnail active" data-image="../plant pot1.jpg">
+                <img src="../plant pot2.jpg" alt="Pot View 2" class="thumbnail" data-image="../plant pot2.jpg">
+            </div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-category">Care Tools & Accessories</div>
+            <h1 class="product-title" id="productTitle">Terracotta Plant Pot 6"</h1>
+
+            <div class="product-rating">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="rating-text">(4.7 / 5) - 143 reviews</span>
+            </div>
+
+            <div class="product-price" id="productPrice">$13</div>
+
+            <div class="product-description">
+                Classic breathable terracotta pot for healthy root development. This traditional clay pot provides natural moisture wicking and excellent air circulation for optimal plant health. The porous material helps prevent overwatering while the earthy aesthetic complements any decor style. Perfect for succulents, herbs, and houseplants.
+            </div>
+
+            <div class="size-selection">
+                <label class="selection-label">Select Size:</label>
+                <div class="size-options" id="sizeOptions">
+                    <button type="button" class="option-btn" data-value="4in" data-price="8">4 Inches</button>
+                    <button type="button" class="option-btn selected" data-value="6in" data-price="13">6 Inches</button>
+                    <button type="button" class="option-btn" data-value="8in" data-price="19">8 Inches</button>
+                    <button type="button" class="option-btn" data-value="10in" data-price="26">10 Inches</button>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <span class="quantity-label">Quantity:</span>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" id="decreaseQty">-</button>
+                    <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10" readonly>
+                    <button class="quantity-btn" id="increaseQty">+</button>
+                </div>
+            </div>
+
+            <button class="add-to-cart-btn" id="addToCartBtn">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+            </button>
+
+            <div class="pro-tip">
+                <div class="pro-tip-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Pro Tip
+                </div>
+                <div class="pro-tip-content">
+                    Terracotta Pots Are Self-Regulating! The porous clay naturally wicks moisture from the soil, helping prevent root rot. This makes them ideal for plants that prefer to dry out between waterings. Soak new terracotta pots in water for a few hours before first use to prevent them from drawing too much moisture from the soil.
+                </div>
+            </div>
+
+            <div class="product-features">
+                <h3 style="color: #2d5016; margin-bottom: 1rem; font-size: 1.3rem;">Product Features</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-wind feature-icon"></i>
+                        <div class="feature-content">
+                            <h4>Breathable Material</h4>
+                            <p>Porous clay allows air circulation to roots</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-tint feature-icon"></i>
+                        <div class="feature-content">
+                            <h4>Moisture Wicking</h4>
+                            <p>Natural evaporation prevents overwatering</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-leaf feature-icon"></i>
+                        <div class="feature-content">
+                            <h4>Healthy Roots</h4>
+                            <p>Promotes strong root development</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-palette feature-icon"></i>
+                        <div class="feature-content">
+                            <h4>Classic Design</h4>
+                            <p>Timeless earthy aesthetic</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Product Specifications</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <ul>
+                                <li><strong>Material:</strong> Natural terracotta clay</li>
+                                <li><strong>Size Range:</strong> 4", 6", 8", 10" diameter</li>
+                                <li><strong>Weight:</strong> Varies by size (0.5-3 lbs)</li>
+                                <li><strong>Drainage:</strong> Drainage hole in bottom</li>
+                                <li><strong>Color:</strong> Natural terracotta orange-red</li>
+                                <li><strong>Finish:</strong> Unglazed, porous</li>
+                                <li><strong>Origin:</strong> Handcrafted</li>
+                                <li><strong>Indoor/Outdoor:</strong> Both (protect from frost)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Usage Instructions</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <ul>
+                                <li>Soak new pots in water for 2-3 hours before first use</li>
+                                <li>Add drainage layer (rocks/gravel) at bottom if desired</li>
+                                <li>Use well-draining potting mix for best results</li>
+                                <li>Water plants more frequently than in plastic pots</li>
+                                <li>Clean with water and soft brush; avoid harsh chemicals</li>
+                                <li>Protect from freezing temperatures to prevent cracking</li>
+                                <li>White mineral deposits can be scrubbed off with vinegar solution</li>
+                                <li>Allow pot to develop natural patina over time</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 E Garden. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/cart.js"></script>
+    <script>
+        // Product data
+        const productData = {
+            id: 'terracotta_plant_pot_6',
+            name: 'Terracotta Plant Pot 6"',
+            basePrice: 13,
+            image: '../plant pot1.jpg',
+            selectedSize: '6in'
+        };
+
+        // Initialize cart count
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = document.getElementById('cartCount');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        // Gallery functionality
+        const mainImage = document.getElementById('mainImage');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const imageSrc = thumb.dataset.image;
+                mainImage.src = imageSrc;
+
+                thumbnails.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            });
+        });
+
+        // Size selection
+        const sizeOptions = document.querySelectorAll('.option-btn');
+        const priceElement = document.getElementById('productPrice');
+
+        sizeOptions.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizeOptions.forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+
+                const price = btn.dataset.price;
+                const size = btn.dataset.value;
+
+                priceElement.textContent = `$${price}`;
+                productData.basePrice = parseFloat(price);
+                productData.selectedSize = size;
+            });
+        });
+
+        // Quantity controls
+        const decreaseBtn = document.getElementById('decreaseQty');
+        const increaseBtn = document.getElementById('increaseQty');
+        const quantityInput = document.getElementById('quantity');
+
+        decreaseBtn.addEventListener('click', () => {
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+
+        increaseBtn.addEventListener('click', () => {
+            let value = parseInt(quantityInput.value);
+            if (value < 10) {
+                quantityInput.value = value + 1;
+            }
+        });
+
+        // Add to cart functionality
+        const addToCartBtn = document.getElementById('addToCartBtn');
+
+        addToCartBtn.addEventListener('click', () => {
+            const quantity = parseInt(quantityInput.value);
+
+            const cartItem = {
+                id: `${productData.id}_${productData.selectedSize}`,
+                name: `${productData.name} (${productData.selectedSize.toUpperCase()})`,
+                price: productData.basePrice,
+                quantity: quantity,
+                image: productData.image,
+                size: productData.selectedSize
+            };
+
+            // Get existing cart
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if item already exists
+            const existingItemIndex = cart.findIndex(item => item.id === cartItem.id);
+
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                cart.push(cartItem);
+            }
+
+            // Save cart
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update cart count
+            updateCartCount();
+
+            // Visual feedback
+            addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Added to Cart!';
+            addToCartBtn.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
+
+            setTimeout(() => {
+                addToCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
+                addToCartBtn.style.background = 'linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%)';
+            }, 2000);
+        });
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const accordionContent = accordionItem.querySelector('.accordion-content');
+                const isActive = accordionItem.classList.contains('active');
+
+                // Close all accordions
+                document.querySelectorAll('.accordion-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.accordion-content').style.maxHeight = null;
+                });
+
+                // Open clicked accordion if it wasn't active
+                if (!isActive) {
+                    accordionItem.classList.add('active');
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // Initialize
+        updateCartCount();
+    </script>
+</body>
+</html>

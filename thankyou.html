@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | E‑Garden</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="other.css" />
+  <style>
+    .ty-container{ max-width:900px; margin:110px auto 40px; padding:24px; text-align:center }
+    .ty-card{ background:#fff; border-radius:16px; box-shadow:0 0 18px rgba(0,0,0,.08); padding:32px }
+    .ty-icon{ font-size:64px; color:#28a745; margin-bottom:16px }
+    .ty-id{ font-weight:700; color:#2c3e50; margin-top:8px; font-size:1.1rem }
+
+    /* Order Items Section */
+    .order-summary{ margin:32px 0; border-top:2px solid #f0f0f0; padding-top:24px }
+    .order-summary h3{ font-size:1.2rem; margin-bottom:16px; color:#2c3e50 }
+    .order-items{ text-align:left; max-width:600px; margin:0 auto }
+    .order-item{ display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid #f0f0f0 }
+    .item-info{ flex:1 }
+    .item-name{ font-weight:600; color:#333; margin-bottom:4px }
+    .item-meta{ font-size:0.9rem; color:#666 }
+    .item-price{ font-weight:700; color:#2c3e50; white-space:nowrap; margin-left:16px }
+
+    .order-total{ display:flex; justify-content:space-between; padding:16px 0; font-size:1.2rem; font-weight:700; color:#2c3e50; border-top:2px solid #2c3e50; margin-top:8px }
+
+    .loading{ color:#666; padding:20px }
+    .error{ color:#dc3545; padding:20px; background:#fff5f5; border-radius:8px; margin:16px 0 }
+
+    .ty-actions{ margin-top:32px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+    .btn{ padding:12px 24px; border-radius:10px; border:1px solid #ddd; background:#f7f7f7; cursor:pointer; text-decoration:none; display:inline-block; transition:all 0.2s }
+    .btn:hover{ background:#e9e9e9 }
+    .btn-primary{ background:#28a745; color:#fff; border:none }
+    .btn-primary:hover{ background:#218838 }
+  </style>
+  <script defer src="js/config.js"></script>
+</head>
+<body>
+  <header id="header">
+    <a href="e garden.html"><img class="logo" src="images/e garden logo1 copy.png" alt="Logo"></a>
+  </header>
+  <div class="ty-container">
+    <div class="ty-card">
+      <div class="ty-icon">✓</div>
+      <h2>Thank you for your order!</h2>
+      <p>Your order has been placed successfully.</p>
+      <div class="ty-id">
+        <div>Order Number: <span id="tyId">-</span></div>
+        <div style="margin-top:8px">Payment Method: <span id="tyMethod">-</span></div>
+      </div>
+
+      <div class="order-summary" id="orderSummary">
+        <div class="loading">Loading order details...</div>
+      </div>
+
+      <div class="ty-actions">
+        <a class="btn" href="shop.html">Continue Shopping</a>
+        <a class="btn btn-primary" href="user-dashboard.html">View All Orders</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (async function(){
+      const url = new URL(window.location.href);
+      const orderId = url.searchParams.get('id');
+      const amount = url.searchParams.get('amt');
+      const method = url.searchParams.get('method') || 'COD';
+
+      // Debug logging
+      console.log('=== THANK YOU PAGE DEBUG ===');
+      console.log('Full URL:', window.location.href);
+      console.log('Order ID from URL:', orderId);
+      console.log('Amount from URL:', amount);
+      console.log('Method from URL:', method);
+
+      // Display basic info from URL (handle "undefined" string)
+      const displayOrderId = (orderId && orderId !== 'undefined' && orderId !== 'null') ? orderId : '-';
+      const displayAmount = (amount && amount !== 'undefined' && amount !== 'null') ? amount : '0.00';
+
+      document.getElementById('tyId').textContent = displayOrderId;
+      document.getElementById('tyMethod').textContent = method === 'cod' ? 'Cash on Delivery' :
+                                                         method === 'esewa' ? 'eSewa' :
+                                                         method === 'khalti' ? 'Khalti' :
+                                                         method === 'card' ? 'Credit Card' :
+                                                         method.toUpperCase();
+
+      const summaryEl = document.getElementById('orderSummary');
+
+      if (!orderId || orderId === 'undefined' || orderId === 'null') {
+        summaryEl.innerHTML = '<div class="error">No order ID found. Please check your email for order details or view your orders in the dashboard.</div>';
+        return;
+      }
+
+      // Fetch order details from backend
+      try {
+        const API_BASE = (window.API_BASE || `${location.origin}/e%20garden/ecommerce_backend`).replace(/\/$/, '');
+
+        // First, try to get the order by order_number
+        const response = await fetch(`${API_BASE}/orders.php?action=getOrderByNumber&order_number=${orderId}`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: { 'Accept': 'application/json' }
+        });
+
+        const data = await response.json();
+
+        if (data.status === 'success' && data.data) {
+          const order = data.data;
+
+          // Display order items
+          let html = '<h3>Order Details</h3><div class="order-items">';
+
+          if (order.items && order.items.length > 0) {
+            order.items.forEach(item => {
+              html += `
+                <div class="order-item">
+                  <div class="item-info">
+                    <div class="item-name">${item.product_name || 'Product'}</div>
+                    <div class="item-meta">Quantity: ${item.quantity} × $${parseFloat(item.price_at_purchase).toFixed(2)}</div>
+                  </div>
+                  <div class="item-price">$${(item.quantity * parseFloat(item.price_at_purchase)).toFixed(2)}</div>
+                </div>
+              `;
+            });
+
+            html += `
+              <div class="order-total">
+                <span>Total Amount</span>
+                <span>$${parseFloat(order.total_amount).toFixed(2)}</span>
+              </div>
+            `;
+          } else {
+            html += '<div class="loading">No items found in this order.</div>';
+          }
+
+          html += '</div>';
+          summaryEl.innerHTML = html;
+
+        } else {
+          // Fallback: Show amount from URL if backend fetch fails
+          console.warn('Backend returned no order data, using URL parameters');
+          summaryEl.innerHTML = `
+            <div class="order-total" style="max-width:600px; margin:0 auto">
+              <span>Total Amount</span>
+              <span>$${displayAmount}</span>
+            </div>
+            <p style="color:#666; font-size:0.9rem; margin-top:16px">Order details will be available in your dashboard shortly.</p>
+          `;
+        }
+
+      } catch (error) {
+        console.error('Failed to fetch order details:', error);
+        // Fallback: Show amount from URL
+        summaryEl.innerHTML = `
+          <div class="order-total" style="max-width:600px; margin:0 auto">
+            <span>Total Amount</span>
+            <span>$${displayAmount}</span>
+          </div>
+          <p style="color:#666; font-size:0.9rem; margin-top:16px">Order details will be available in your dashboard shortly.</p>
+        `;
+      }
+    })();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful | E-Garden</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="other.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            font-family: "Montserrat", Arial, sans-serif;
+            background: #f8f8f8;
+            margin: 0;
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .success-container {
+            max-width: 600px;
+            margin: 80px auto 40px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #28a745;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+            color: white;
+        }
+
+        .success-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .success-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .order-details {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .order-detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-detail-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #28a745;
+        }
+
+        .order-number {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7cd49f 0%, #5eb880 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 212, 159, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #333;
+            border: 1px solid #dee2e6;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        .payment-method-badge {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .payment-method-badge.esewa {
+            background: #60bb46;
+        }
+
+        .payment-method-badge.khalti {
+            background: #5d2e8e;
+        }
+
+        @media (max-width: 600px) {
+            .success-container {
+                margin: 40px 20px;
+                padding: 20px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Loading spinner */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #28a745;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <a href="e garden.html">
+            <img class="logo" src="/images/e garden logo1 copy.png" alt="Logo">
+        </a>
+        <nav id="main-nav-desktop">
+            <ul id="navbar-desktop">
+                <li><a href="shop.html">Plants</a></li>
+                <li><a href="caretool.html">Care Tools</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div id="icons">
+            <i class="fas fa-search" id="search-icon" onclick="toggleSearchOverlay()"></i>
+            <a href="login.html"><i class="fas fa-user" id="user-icon"></i></a>
+            <a href="cart.html" id="lg-bag"><i class="fal fa-shopping-bag"></i></a>
+            <i class="fas fa-bars" id="menu-button"></i>
+        </div>
+    </header>
+
+    <div class="success-container">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+
+        <h1 class="success-title">Payment Successful!</h1>
+        <p class="success-subtitle">Your order has been confirmed and payment has been processed.</p>
+
+        <div id="orderDetails">
+            <!-- Order details will be populated by JavaScript -->
+        </div>
+
+        <div class="action-buttons">
+            <a href="e garden.html" class="btn btn-primary">
+                <i class="fas fa-home"></i> Continue Shopping
+            </a>
+            <a href="user-dashboard.html" class="btn btn-secondary">
+                <i class="fas fa-user"></i> View My Orders
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Handle payment success callback
+        document.addEventListener('DOMContentLoaded', async function() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            console.log('=== PAYMENT SUCCESS PAGE ===');
+            console.log('All URL params:', urlParams.toString());
+
+            // Get eSewa v2 API callback parameters
+            const transactionCode = urlParams.get('transaction_code');
+            const status = urlParams.get('status');
+            const totalAmount = urlParams.get('total_amount');
+            const transactionUuid = urlParams.get('transaction_uuid'); // This is our order number
+            const productCode = urlParams.get('product_code');
+            const signedFieldNames = urlParams.get('signed_field_names');
+            const signature = urlParams.get('signature');
+
+            console.log('eSewa v2 params:', {
+                transactionCode,
+                status,
+                totalAmount,
+                transactionUuid,
+                productCode
+            });
+
+            // Check if this is an eSewa v2 payment callback
+            if (transactionCode && transactionUuid) {
+                // Show verifying message
+                showVerifyingMessage();
+
+                try {
+                    // Verify payment with backend
+                    const verificationResult = await verifyEsewaPaymentV2({
+                        transaction_code: transactionCode,
+                        status: status,
+                        total_amount: totalAmount,
+                        transaction_uuid: transactionUuid,
+                        product_code: productCode,
+                        signed_field_names: signedFieldNames,
+                        signature: signature
+                    });
+
+                    if (verificationResult.success) {
+                        // Payment verified successfully
+                        const orderData = verificationResult.data;
+                        displayOrderDetails(
+                            {
+                                orderNumber: orderData.order_number,
+                                amount: orderData.amount
+                            },
+                            'esewa',
+                            transactionCode
+                        );
+
+                        // Clear cart
+                        localStorage.removeItem('cart');
+                        localStorage.removeItem('checkoutInfo');
+                    } else {
+                        // Verification failed - redirect to failure page
+                        console.error('Verification failed:', verificationResult.message);
+                        window.location.href = `payment-failed.html?order=${transactionUuid}&reason=${encodeURIComponent(verificationResult.message)}`;
+                    }
+                } catch (error) {
+                    console.error('Payment verification error:', error);
+                    // Redirect to failure page on error
+                    window.location.href = `payment-failed.html?order=${transactionUuid}&reason=verification_error`;
+                }
+            } else {
+                // Not an eSewa callback - might be direct access or other payment method
+                console.log('No eSewa callback parameters found');
+
+                // Show a message
+                const container = document.getElementById('orderDetails');
+                container.innerHTML = `
+                    <div style="padding: 20px; text-align: center;">
+                        <p style="color: #666;">
+                            No payment information found. Please check your email for order confirmation.
+                        </p>
+                        <p style="color: #999; font-size: 0.9rem; margin-top: 10px;">
+                            If you just completed a payment, it may take a few moments to process.
+                        </p>
+                    </div>
+                `;
+            }
+        });
+
+        // Show verifying message while checking payment
+        function showVerifyingMessage() {
+            const container = document.getElementById('orderDetails');
+            container.innerHTML = `
+                <div style="text-align: center; padding: 40px 20px;">
+                    <div class="spinner" style="margin: 0 auto 20px;"></div>
+                    <p style="font-size: 1.1rem; color: #666;">
+                        Verifying your payment with eSewa...
+                    </p>
+                    <p style="font-size: 0.9rem; color: #999;">
+                        Please wait, this will only take a moment.
+                    </p>
+                </div>
+            `;
+        }
+
+        // Verify eSewa v2 payment with backend
+        async function verifyEsewaPaymentV2(callbackData) {
+            try {
+                const API_BASE = (window.API_BASE || `${location.origin}/e%20garden/ecommerce_backend`).replace(/\/$/, '');
+
+                // Build query string with all callback parameters
+                const params = new URLSearchParams(callbackData);
+                const verifyUrl = `${API_BASE}/esewa-verify.php?${params.toString()}`;
+
+                console.log('Verifying payment at:', verifyUrl);
+
+                const response = await fetch(verifyUrl, {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                console.log('Verification response:', data);
+
+                if (data.status === 'success') {
+                    return {
+                        success: true,
+                        data: data.data
+                    };
+                } else {
+                    return {
+                        success: false,
+                        message: data.message || 'Payment verification failed'
+                    };
+                }
+            } catch (error) {
+                console.error('Error verifying eSewa payment:', error);
+                return {
+                    success: false,
+                    message: 'Network error during verification'
+                };
+            }
+        }
+
+        async function updateOrderStatus(orderId, status) {
+            try {
+                const csrfResponse = await fetch('../ecommerce_backend/csrf.php');
+                const csrfData = await csrfResponse.json();
+
+                await fetch('../ecommerce_backend/orders.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': csrfData.csrf_token
+                    },
+                    body: JSON.stringify({
+                        action: 'updateOrderStatus',
+                        order_id: orderId,
+                        status: status,
+                        _csrf: csrfData.csrf_token
+                    })
+                });
+            } catch (error) {
+                console.error('Failed to update order status:', error);
+            }
+        }
+
+        function displayOrderDetails(order, method, refId = null) {
+            const container = document.getElementById('orderDetails');
+
+            const methodName = method === 'esewa' ? 'eSewa' : method === 'khalti' ? 'Khalti' : 'Card';
+            const methodClass = method === 'esewa' ? 'esewa' : method === 'khalti' ? 'khalti' : '';
+
+            // Build reference ID row if available
+            const refIdRow = refId ? `
+                <div class="order-detail-row">
+                    <span>eSewa Reference ID:</span>
+                    <span style="font-family: monospace; font-size: 0.9rem;">${refId}</span>
+                </div>
+            ` : '';
+
+            container.innerHTML = `
+                <div class="order-number">
+                    Order #${order.orderNumber}
+                </div>
+
+                <span class="payment-method-badge ${methodClass}">
+                    <i class="fas fa-credit-card"></i> Paid via ${methodName}
+                </span>
+
+                <div class="order-details">
+                    <div class="order-detail-row">
+                        <span>Order Number:</span>
+                        <span>${order.orderNumber}</span>
+                    </div>
+                    <div class="order-detail-row">
+                        <span>Payment Method:</span>
+                        <span>${methodName}</span>
+                    </div>
+                    ${refIdRow}
+                    <div class="order-detail-row">
+                        <span>Amount Paid:</span>
+                        <span>$${order.amount}</span>
+                    </div>
+                    <div class="order-detail-row">
+                        <span>Status:</span>
+                        <span style="color: #28a745; font-weight: 700;">✓ Payment Verified</span>
+                    </div>
+                </div>
+
+                <p style="color: #666; margin-top: 20px; font-size: 0.95rem;">
+                    <i class="fas fa-shield-alt" style="color: #28a745;"></i>
+                    Your payment has been securely verified. A confirmation email has been sent to your email address with order details.
+                </p>
+            `;
+        }
+    </script>
+
+    <script src="js/config.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>

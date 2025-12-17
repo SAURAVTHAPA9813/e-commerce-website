@@ -1,0 +1,45 @@
+            function setupRecommendationButtons() {
+                const addItemButtons = document.querySelectorAll('.add-item-btn');
+
+                addItemButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        if (this.classList.contains('added')) {
+                            // Already added - do nothing or show message
+                            return;
+                        }
+
+                        // Wait for cart to be available
+                        if (!window.cart) {
+                            console.error('Cart system not loaded yet');
+                            alert('Cart system is loading. Please try again in a moment.');
+                            return;
+                        }
+
+                        // Get product data from button attributes
+                        const productData = {
+                            id: this.dataset.id,
+                            name: this.dataset.name,
+                            price: parseFloat(this.dataset.price),
+                            image: this.dataset.image,
+                            description: this.dataset.description,
+                            category: 'tool',
+                            care_level: 'easy'
+                        };
+
+                        console.log('Adding recommendation to cart:', productData);
+
+                        // Add to cart using the existing cart.js system
+                        window.cart.addItem(productData);
+
+                        // Visual feedback
+                        this.classList.add('added');
+                        this.textContent = '✓ Added';
+
+                        // Reset after 2 seconds
+                        setTimeout(() => {
+                            this.classList.remove('added');
+                            this.textContent = 'Add';
+                        }, 2000);
+                    });
+                });
+            }
